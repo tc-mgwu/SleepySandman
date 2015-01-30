@@ -236,12 +236,26 @@ class GameScene: SKScene {
         sheep.setScale(0)
         addChild(sheep)
         
-        //scale cat up
+        //scale Sheep up
         let appear = SKAction.scaleTo(1.0, duration: 0.5)
-        let wait = SKAction.waitForDuration(10.0)
+        sheep.zRotation = -π / 16.0
+        
+        //rotate left, then reverse for rotate right- repeat actions in seq
+        let leftWiggle = SKAction.rotateByAngle(π/8.0, duration: 0.5)
+        let rightWiggle = leftWiggle.reversedAction()
+        let fullWiggle = SKAction.sequence([leftWiggle, rightWiggle])
+        
+        let scaleUp = SKAction.scaleBy(1.2, duration: 0.25)
+        let scaleDown = scaleUp.reversedAction()
+        let fullScale = SKAction.sequence(
+            [scaleUp, scaleDown, scaleUp, scaleDown])
+        //sets up wiggle and scale at same time
+        let group = SKAction.group([fullScale, fullWiggle])
+        let groupWait = SKAction.repeatAction(group, count: 10)
+        
         let disappear = SKAction.scaleTo(0, duration: 0.5)
         let removeFromParent = SKAction.removeFromParent()
-        let actions = [appear, wait, disappear, removeFromParent]
+        let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
    
     }
