@@ -15,6 +15,8 @@ class GameScene: SKScene {
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
     let zombieMovePointsPerSec: CGFloat = 480.0
+    let catMovePointsPerSec:CGFloat = 480.0
+
     var velocity = CGPointZero
     let playableRect: CGRect
     var lastTouchLocation: CGPoint?
@@ -79,6 +81,7 @@ class GameScene: SKScene {
         let mySize = background.size
         println("Size: \(mySize)")
         
+        zombie.zPosition = 100
         zombie.position = CGPoint(x: 400, y: 400)
         addChild(zombie)
         
@@ -273,9 +276,13 @@ class GameScene: SKScene {
     
     
     func zombieHitSheep(sheep: SKSpriteNode) {
-        sheep.removeFromParent()
-        
         runAction(sheepCollisionSound)
+        sheep.name = "train"
+        sheep.setScale(1.0)
+        sheep.zRotation = 0
+        let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
+            sheep.runAction(turnColor)
+    
     }
     
     
@@ -327,6 +334,7 @@ class GameScene: SKScene {
         zombieHitEnemy(enemy)
         }
     }
+    
     
     
     
