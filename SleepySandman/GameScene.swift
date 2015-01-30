@@ -119,6 +119,7 @@ class GameScene: SKScene {
         }
         
         boundsCheckZombie()
+        checkCollisions()
         
     }
     
@@ -227,6 +228,7 @@ class GameScene: SKScene {
     {
         //spawn cat at random location
         let sheep = SKSpriteNode(imageNamed: "sheep")
+        sheep.name = "sheep"
         sheep.position = CGPoint(
             x: CGFloat.random(min: CGRectGetMinX(playableRect),
                 max: CGRectGetMaxX(playableRect)),
@@ -259,5 +261,42 @@ class GameScene: SKScene {
         sheep.runAction(SKAction.sequence(actions))
    
     }
+    
+    
+    func zombieHitSheep(sheep: SKSpriteNode) {
+        sheep.removeFromParent()
+    }
+    func zombieHitEnemy(enemy: SKSpriteNode) {
+        enemy.removeFromParent()
+    }
+    
+    func checkCollisions() {
+        var hitSheep: [SKSpriteNode] = []
+        enumerateChildNodesWithName("sheep") { node, _ in
+        let sheep = node as SKSpriteNode
+       
+        if CGRectIntersectsRect(sheep.frame, self.zombie.frame) {
+        hitSheep.append(sheep)
+        }
+        }
+        for sheep in hitSheep {
+        zombieHitSheep(sheep)
+        }
+        var hitEnemies: [SKSpriteNode] = []
+        enumerateChildNodesWithName("enemy") { node, _ in
+        let enemy = node as SKSpriteNode
+        if CGRectIntersectsRect(
+        CGRectInset(node.frame, 20, 20), self.zombie.frame) {
+        hitEnemies.append(enemy)
+        }
+        }
+        for enemy in hitEnemies {
+        zombieHitEnemy(enemy)
+        }
+    }
+    
+    
+    
+    
     
 }
