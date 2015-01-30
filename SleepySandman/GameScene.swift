@@ -19,6 +19,9 @@ class GameScene: SKScene {
     var lastTouchLocation: CGPoint?
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
     
+    let zombieAnimation: SKAction
+    
+    
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
         let playableHeight = size.width / maxAspectRatio // 2
@@ -26,6 +29,20 @@ class GameScene: SKScene {
         playableRect = CGRect(x: 0, y: playableMargin,
             width: size.width,
             height: playableHeight) // 4
+        
+        //animate character
+        //create array to store all textures
+        var textures:[SKTexture] = []
+        //string setup
+        for i in 1...4 {
+            textures.append(SKTexture(imageNamed: "zombie\(i)"))
+        }
+        textures.append(textures[2])
+        textures.append(textures[1])
+        
+        zombieAnimation = SKAction.repeatActionForever(
+            SKAction.animateWithTextures(textures, timePerFrame: 0.1))
+        
         super.init(size: size) // 5
     }
     
@@ -43,7 +60,8 @@ class GameScene: SKScene {
         addChild(shape)
     }
     
-    override func didMoveToView(view: SKView) {
+    override func didMoveToView(view: SKView)
+    {
         backgroundColor = SKColor.whiteColor()
         
         let background = SKSpriteNode(imageNamed: "background1")
@@ -58,12 +76,14 @@ class GameScene: SKScene {
         
         zombie.position = CGPoint(x: 400, y: 400)
         addChild(zombie)
-        spawnEnemy()
+        
         
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnEnemy),
                 SKAction.waitForDuration(2.0)])))
        
+        
+        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
 //        debugDrawPlayableArea()
     }
     
@@ -168,6 +188,7 @@ class GameScene: SKScene {
         
         let actionMove =
         SKAction.moveToX(-enemy.size.width/2, duration: 2.0)
+        //removes enemy
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
     }
