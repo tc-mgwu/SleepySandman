@@ -10,6 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
+    
     let zombie: SKSpriteNode = SKSpriteNode(imageNamed: "zombie1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -77,11 +78,15 @@ class GameScene: SKScene {
         zombie.position = CGPoint(x: 400, y: 400)
         addChild(zombie)
         
-        
+        //spawn enemies forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnEnemy),
                 SKAction.waitForDuration(2.0)])))
        
+        //spawn sheep forever
+        runAction(SKAction.repeatActionForever(
+            SKAction.sequence([SKAction.runBlock(spawnSheep),
+            SKAction.waitForDuration(1.0)])))
         
 //        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
 //        debugDrawPlayableArea()
@@ -182,6 +187,8 @@ class GameScene: SKScene {
         sprite.zRotation += shortest.sign() * amountToRotate
     }
     
+    
+    //SPAWN ENEMY
     func spawnEnemy()
     {
         let enemy = SKSpriteNode(imageNamed: "enemy")
@@ -194,15 +201,17 @@ class GameScene: SKScene {
         addChild(enemy)
         
         let actionMove =
-        SKAction.moveToX(-enemy.size.width/2, duration: 2.0)
+        SKAction.moveToX(-enemy.size.width/2, duration: 3.5)
         //removes enemy
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
     }
     
-    //tags animation key
-    func startZombieAnimation() {
-        if zombie.actionForKey("animation") == nil {
+    //MAIN CHARACTER ANIMATION: tags animation key
+    func startZombieAnimation()
+    {
+        if zombie.actionForKey("animation") == nil
+        {
         zombie.runAction(
             SKAction.repeatActionForever(zombieAnimation),
             withKey: "animation")
@@ -213,6 +222,28 @@ class GameScene: SKScene {
         zombie.removeActionForKey("animation")
     }
 
-    
+    //SPAWN SHEEP
+    func spawnSheep()
+    {
+        //spawn cat at random location
+        let sheep = SKSpriteNode(imageNamed: "sheep")
+        sheep.position = CGPoint(
+            x: CGFloat.random(min: CGRectGetMinX(playableRect),
+                max: CGRectGetMaxX(playableRect)),
+            y: CGFloat.random(min: CGRectGetMinY(playableRect),
+                max: CGRectGetMaxY(playableRect)))
+        
+        sheep.setScale(0)
+        addChild(sheep)
+        
+        //scale cat up
+        let appear = SKAction.scaleTo(1.0, duration: 0.5)
+        let wait = SKAction.waitForDuration(10.0)
+        let disappear = SKAction.scaleTo(0, duration: 0.5)
+        let removeFromParent = SKAction.removeFromParent()
+        let actions = [appear, wait, disappear, removeFromParent]
+        sheep.runAction(SKAction.sequence(actions))
+   
+    }
     
 }
