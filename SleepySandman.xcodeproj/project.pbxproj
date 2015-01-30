@@ -1,0 +1,428 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */; };
+		A53C20FD1A7B1968002DDDA9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A53C20FC1A7B1968002DDDA9 /* GameScene.sks */; };
+		A53C20FF1A7B1968002DDDA9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FE1A7B1968002DDDA9 /* GameScene.swift */; };
+		A53C21011A7B1968002DDDA9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C21001A7B1968002DDDA9 /* GameViewController.swift */; };
+		A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53C21021A7B1968002DDDA9 /* Main.storyboard */; };
+		A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53C21051A7B1968002DDDA9 /* Images.xcassets */; };
+		A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C21071A7B1968002DDDA9 /* LaunchScreen.xib */; };
+		A53C21151A7B1968002DDDA9 /* SleepySandmanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A53C210F1A7B1968002DDDA9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A53C20ED1A7B1968002DDDA9 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A53C20F41A7B1968002DDDA9;
+			remoteInfo = SleepySandman;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A53C20F51A7B1968002DDDA9 /* SleepySandman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepySandman.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53C20F91A7B1968002DDDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A53C20FC1A7B1968002DDDA9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		A53C20FE1A7B1968002DDDA9 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
+		A53C21001A7B1968002DDDA9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		A53C21031A7B1968002DDDA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A53C21051A7B1968002DDDA9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A53C21081A7B1968002DDDA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A53C210E1A7B1968002DDDA9 /* SleepySandmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepySandmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A53C21131A7B1968002DDDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepySandmanTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A53C20F21A7B1968002DDDA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53C210B1A7B1968002DDDA9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A53C20EC1A7B1968002DDDA9 = {
+			isa = PBXGroup;
+			children = (
+				A53C20F71A7B1968002DDDA9 /* SleepySandman */,
+				A53C21111A7B1968002DDDA9 /* SleepySandmanTests */,
+				A53C20F61A7B1968002DDDA9 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A53C20F61A7B1968002DDDA9 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A53C20F51A7B1968002DDDA9 /* SleepySandman.app */,
+				A53C210E1A7B1968002DDDA9 /* SleepySandmanTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A53C20F71A7B1968002DDDA9 /* SleepySandman */ = {
+			isa = PBXGroup;
+			children = (
+				A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */,
+				A53C20FC1A7B1968002DDDA9 /* GameScene.sks */,
+				A53C20FE1A7B1968002DDDA9 /* GameScene.swift */,
+				A53C21001A7B1968002DDDA9 /* GameViewController.swift */,
+				A53C21021A7B1968002DDDA9 /* Main.storyboard */,
+				A53C21051A7B1968002DDDA9 /* Images.xcassets */,
+				A53C21071A7B1968002DDDA9 /* LaunchScreen.xib */,
+				A53C20F81A7B1968002DDDA9 /* Supporting Files */,
+			);
+			path = SleepySandman;
+			sourceTree = "<group>";
+		};
+		A53C20F81A7B1968002DDDA9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A53C20F91A7B1968002DDDA9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A53C21111A7B1968002DDDA9 /* SleepySandmanTests */ = {
+			isa = PBXGroup;
+			children = (
+				A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */,
+				A53C21121A7B1968002DDDA9 /* Supporting Files */,
+			);
+			path = SleepySandmanTests;
+			sourceTree = "<group>";
+		};
+		A53C21121A7B1968002DDDA9 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A53C21131A7B1968002DDDA9 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A53C20F41A7B1968002DDDA9 /* SleepySandman */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A53C21181A7B1968002DDDA9 /* Build configuration list for PBXNativeTarget "SleepySandman" */;
+			buildPhases = (
+				A53C20F11A7B1968002DDDA9 /* Sources */,
+				A53C20F21A7B1968002DDDA9 /* Frameworks */,
+				A53C20F31A7B1968002DDDA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SleepySandman;
+			productName = SleepySandman;
+			productReference = A53C20F51A7B1968002DDDA9 /* SleepySandman.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A53C210D1A7B1968002DDDA9 /* SleepySandmanTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A53C211B1A7B1968002DDDA9 /* Build configuration list for PBXNativeTarget "SleepySandmanTests" */;
+			buildPhases = (
+				A53C210A1A7B1968002DDDA9 /* Sources */,
+				A53C210B1A7B1968002DDDA9 /* Frameworks */,
+				A53C210C1A7B1968002DDDA9 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A53C21101A7B1968002DDDA9 /* PBXTargetDependency */,
+			);
+			name = SleepySandmanTests;
+			productName = SleepySandmanTests;
+			productReference = A53C210E1A7B1968002DDDA9 /* SleepySandmanTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A53C20ED1A7B1968002DDDA9 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = TonicGames;
+				TargetAttributes = {
+					A53C20F41A7B1968002DDDA9 = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					A53C210D1A7B1968002DDDA9 = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = A53C20F41A7B1968002DDDA9;
+					};
+				};
+			};
+			buildConfigurationList = A53C20F01A7B1968002DDDA9 /* Build configuration list for PBXProject "SleepySandman" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A53C20EC1A7B1968002DDDA9;
+			productRefGroup = A53C20F61A7B1968002DDDA9 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A53C20F41A7B1968002DDDA9 /* SleepySandman */,
+				A53C210D1A7B1968002DDDA9 /* SleepySandmanTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A53C20F31A7B1968002DDDA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */,
+				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
+				A53C20FD1A7B1968002DDDA9 /* GameScene.sks in Resources */,
+				A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53C210C1A7B1968002DDDA9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A53C20F11A7B1968002DDDA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53C20FF1A7B1968002DDDA9 /* GameScene.swift in Sources */,
+				A53C21011A7B1968002DDDA9 /* GameViewController.swift in Sources */,
+				A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A53C210A1A7B1968002DDDA9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A53C21151A7B1968002DDDA9 /* SleepySandmanTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A53C21101A7B1968002DDDA9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A53C20F41A7B1968002DDDA9 /* SleepySandman */;
+			targetProxy = A53C210F1A7B1968002DDDA9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A53C21021A7B1968002DDDA9 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A53C21031A7B1968002DDDA9 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A53C21071A7B1968002DDDA9 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A53C21081A7B1968002DDDA9 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A53C21161A7B1968002DDDA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A53C21171A7B1968002DDDA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A53C21191A7B1968002DDDA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SleepySandman/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A53C211A1A7B1968002DDDA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = SleepySandman/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A53C211C1A7B1968002DDDA9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SleepySandmanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepySandman.app/SleepySandman";
+			};
+			name = Debug;
+		};
+		A53C211D1A7B1968002DDDA9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = SleepySandmanTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SleepySandman.app/SleepySandman";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A53C20F01A7B1968002DDDA9 /* Build configuration list for PBXProject "SleepySandman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53C21161A7B1968002DDDA9 /* Debug */,
+				A53C21171A7B1968002DDDA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A53C21181A7B1968002DDDA9 /* Build configuration list for PBXNativeTarget "SleepySandman" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53C21191A7B1968002DDDA9 /* Debug */,
+				A53C211A1A7B1968002DDDA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A53C211B1A7B1968002DDDA9 /* Build configuration list for PBXNativeTarget "SleepySandmanTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A53C211C1A7B1968002DDDA9 /* Debug */,
+				A53C211D1A7B1968002DDDA9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A53C20ED1A7B1968002DDDA9 /* Project object */;
+}
