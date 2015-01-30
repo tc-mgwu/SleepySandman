@@ -10,7 +10,7 @@ import SpriteKit
 
 class GameScene: SKScene {
     
-    
+    let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
     let zombie: SKSpriteNode = SKSpriteNode(imageNamed: "zombie1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -19,9 +19,12 @@ class GameScene: SKScene {
     let playableRect: CGRect
     var lastTouchLocation: CGPoint?
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
-    
+    var invincible = false
     let zombieAnimation: SKAction
-    
+    let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
+        "Bloop.wav", waitForCompletion: false)
+    let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
+        "hitCatLady.wav", waitForCompletion: false)
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
@@ -63,6 +66,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView)
     {
+        
         backgroundColor = SKColor.whiteColor()
         
         let background = SKSpriteNode(imageNamed: "background1")
@@ -119,8 +123,11 @@ class GameScene: SKScene {
         }
         
         boundsCheckZombie()
-        checkCollisions()
+//        checkCollisions()
         
+    }
+    override func didEvaluateActions() {
+        checkCollisions()
     }
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
@@ -192,6 +199,8 @@ class GameScene: SKScene {
     //SPAWN ENEMY
     func spawnEnemy()
     {
+        label.text = "I'm the player"
+        
         let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.name = "enemy"
         enemy.position = CGPoint(
@@ -265,9 +274,28 @@ class GameScene: SKScene {
     
     func zombieHitSheep(sheep: SKSpriteNode) {
         sheep.removeFromParent()
+        
+        runAction(sheepCollisionSound)
     }
+    
+    
     func zombieHitEnemy(enemy: SKSpriteNode) {
-        enemy.removeFromParent()
+        runAction(enemyCollisionSound)
+        invincible = true
+       
+        let blinkTimes = 10.0
+        let duration = 3.0
+        let blinkAction = SKAction.customActionWithDuration(duration) { node, elapsedTime in
+            let slice = duration / blinkTimes
+            let remainder = Double(elapsedTime) % slice
+            node.hidden = remainder > slice / 2
+        }
+        let setHidden = SKAction.runBlock() {
+            self.zombie.hidden = false
+            self.invincible = false
+        }
+        zombie.runAction(SKAction.sequence([blinkAction, setHidden]))
+   
     }
     
     func checkCollisions() {
@@ -282,6 +310,11 @@ class GameScene: SKScene {
         for sheep in hitSheep {
         zombieHitSheep(sheep)
         }
+        
+        if invincible {
+        return
+        }
+                
         var hitEnemies: [SKSpriteNode] = []
         enumerateChildNodesWithName("enemy") { node, _ in
         let enemy = node as SKSpriteNode

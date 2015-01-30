@@ -20,6 +20,12 @@
 		A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21231A7B1CF1002DDDA9 /* YouWin.png */; };
 		A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A53C21241A7B1CF1002DDDA9 /* sprites.atlas */; };
 		A53C212C1A7B30EF002DDDA9 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */; };
+		A5810A721A7C47D200D52532 /* BackgroundMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A6D1A7C47D100D52532 /* BackgroundMusic.wav */; };
+		A5810A731A7C47D200D52532 /* Bloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A6E1A7C47D100D52532 /* Bloop.wav */; };
+		A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A6F1A7C47D100D52532 /* hitCatLady.wav */; };
+		A5810A751A7C47D200D52532 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A701A7C47D200D52532 /* lose.wav */; };
+		A5810A761A7C47D200D52532 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A711A7C47D200D52532 /* win.wav */; };
+		A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */; };
 		A5E6AA051A7B3CED003F6271 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E6AA041A7B3CED003F6271 /* background1.png */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +57,12 @@
 		A53C21231A7B1CF1002DDDA9 /* YouWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouWin.png; sourceTree = "<group>"; };
 		A53C21241A7B1CF1002DDDA9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		A5810A6D1A7C47D100D52532 /* BackgroundMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BackgroundMusic.wav; sourceTree = "<group>"; };
+		A5810A6E1A7C47D100D52532 /* Bloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bloop.wav; sourceTree = "<group>"; };
+		A5810A6F1A7C47D100D52532 /* hitCatLady.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCatLady.wav; sourceTree = "<group>"; };
+		A5810A701A7C47D200D52532 /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
+		A5810A711A7C47D200D52532 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
+		A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
 		A5E6AA041A7B3CED003F6271 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -93,6 +105,7 @@
 		A53C20F71A7B1968002DDDA9 /* SleepySandman */ = {
 			isa = PBXGroup;
 			children = (
+				A5810A6C1A7C47D100D52532 /* Sounds */,
 				A53C211E1A7B1CF1002DDDA9 /* Images */,
 				A53C21241A7B1CF1002DDDA9 /* sprites.atlas */,
 				A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */,
@@ -142,6 +155,19 @@
 				A53C21231A7B1CF1002DDDA9 /* YouWin.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		A5810A6C1A7C47D100D52532 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */,
+				A5810A6D1A7C47D100D52532 /* BackgroundMusic.wav */,
+				A5810A6E1A7C47D100D52532 /* Bloop.wav */,
+				A5810A6F1A7C47D100D52532 /* hitCatLady.wav */,
+				A5810A701A7C47D200D52532 /* lose.wav */,
+				A5810A711A7C47D200D52532 /* win.wav */,
+			);
+			path = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,13 +250,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5810A721A7C47D200D52532 /* BackgroundMusic.wav in Resources */,
+				A5810A731A7C47D200D52532 /* Bloop.wav in Resources */,
 				A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */,
 				A5E6AA051A7B3CED003F6271 /* background1.png in Resources */,
+				A5810A751A7C47D200D52532 /* lose.wav in Resources */,
 				A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */,
 				A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */,
+				A5810A761A7C47D200D52532 /* win.wav in Resources */,
 				A53C21271A7B1CF1002DDDA9 /* MainMenu.png in Resources */,
 				A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */,
 				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
+				A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */,
+				A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */,
 				A53C21261A7B1CF1002DDDA9 /* background2.png in Resources */,
 				A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */,
 			);
