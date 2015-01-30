@@ -83,7 +83,7 @@ class GameScene: SKScene {
                 SKAction.waitForDuration(2.0)])))
        
         
-        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
+//        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
 //        debugDrawPlayableArea()
     }
     
@@ -97,12 +97,17 @@ class GameScene: SKScene {
         lastUpdateTime = currentTime
         println("\(dt*1000) milliseconds since last update")
         
-        if let lastTouch = lastTouchLocation {
+        if let lastTouch = lastTouchLocation
+        {
             let diff = lastTouch - zombie.position
-            if (diff.length() <= zombieMovePointsPerSec * CGFloat(dt)) {
+            if (diff.length() <= zombieMovePointsPerSec * CGFloat(dt))
+            {
                 zombie.position = lastTouchLocation!
                 velocity = CGPointZero
-            } else {
+                stopZombieAnimation()
+            }
+            else
+            {
                 moveSprite(zombie, velocity: velocity)
                 rotateSprite(zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
             }
@@ -118,7 +123,9 @@ class GameScene: SKScene {
         sprite.position += amountToMove
     }
     
-    func moveZombieToward(location: CGPoint) {
+    func moveZombieToward(location: CGPoint)
+    {
+        startZombieAnimation()
         let offset = location - zombie.position
         let direction = offset.normalized()
         velocity = direction * zombieMovePointsPerSec
@@ -192,6 +199,20 @@ class GameScene: SKScene {
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
     }
+    
+    //tags animation key
+    func startZombieAnimation() {
+        if zombie.actionForKey("animation") == nil {
+        zombie.runAction(
+            SKAction.repeatActionForever(zombieAnimation),
+            withKey: "animation")
+        }
+    }
+    //stops animation with key "animation"
+    func stopZombieAnimation() {
+        zombie.removeActionForKey("animation")
+    }
+
     
     
 }
