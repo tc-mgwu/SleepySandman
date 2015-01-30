@@ -8,13 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */; };
-		A53C20FD1A7B1968002DDDA9 /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = A53C20FC1A7B1968002DDDA9 /* GameScene.sks */; };
 		A53C20FF1A7B1968002DDDA9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FE1A7B1968002DDDA9 /* GameScene.swift */; };
 		A53C21011A7B1968002DDDA9 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C21001A7B1968002DDDA9 /* GameViewController.swift */; };
 		A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A53C21021A7B1968002DDDA9 /* Main.storyboard */; };
 		A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A53C21051A7B1968002DDDA9 /* Images.xcassets */; };
 		A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C21071A7B1968002DDDA9 /* LaunchScreen.xib */; };
 		A53C21151A7B1968002DDDA9 /* SleepySandmanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */; };
+		A53C21251A7B1CF1002DDDA9 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C211F1A7B1CF1002DDDA9 /* background1.png */; };
+		A53C21261A7B1CF1002DDDA9 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21201A7B1CF1002DDDA9 /* background2.png */; };
+		A53C21271A7B1CF1002DDDA9 /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21211A7B1CF1002DDDA9 /* MainMenu.png */; };
+		A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21221A7B1CF1002DDDA9 /* YouLose.png */; };
+		A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21231A7B1CF1002DDDA9 /* YouWin.png */; };
+		A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A53C21241A7B1CF1002DDDA9 /* sprites.atlas */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +36,6 @@
 		A53C20F51A7B1968002DDDA9 /* SleepySandman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepySandman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53C20F91A7B1968002DDDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A53C20FC1A7B1968002DDDA9 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		A53C20FE1A7B1968002DDDA9 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		A53C21001A7B1968002DDDA9 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		A53C21031A7B1968002DDDA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +44,12 @@
 		A53C210E1A7B1968002DDDA9 /* SleepySandmanTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SleepySandmanTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53C21131A7B1968002DDDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepySandmanTests.swift; sourceTree = "<group>"; };
+		A53C211F1A7B1CF1002DDDA9 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
+		A53C21201A7B1CF1002DDDA9 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
+		A53C21211A7B1CF1002DDDA9 /* MainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu.png; sourceTree = "<group>"; };
+		A53C21221A7B1CF1002DDDA9 /* YouLose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouLose.png; sourceTree = "<group>"; };
+		A53C21231A7B1CF1002DDDA9 /* YouWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouWin.png; sourceTree = "<group>"; };
+		A53C21241A7B1CF1002DDDA9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,8 +91,9 @@
 		A53C20F71A7B1968002DDDA9 /* SleepySandman */ = {
 			isa = PBXGroup;
 			children = (
+				A53C211E1A7B1CF1002DDDA9 /* Images */,
+				A53C21241A7B1CF1002DDDA9 /* sprites.atlas */,
 				A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */,
-				A53C20FC1A7B1968002DDDA9 /* GameScene.sks */,
 				A53C20FE1A7B1968002DDDA9 /* GameScene.swift */,
 				A53C21001A7B1968002DDDA9 /* GameViewController.swift */,
 				A53C21021A7B1968002DDDA9 /* Main.storyboard */,
@@ -116,6 +127,18 @@
 				A53C21131A7B1968002DDDA9 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A53C211E1A7B1CF1002DDDA9 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A53C211F1A7B1CF1002DDDA9 /* background1.png */,
+				A53C21201A7B1CF1002DDDA9 /* background2.png */,
+				A53C21211A7B1CF1002DDDA9 /* MainMenu.png */,
+				A53C21221A7B1CF1002DDDA9 /* YouLose.png */,
+				A53C21231A7B1CF1002DDDA9 /* YouWin.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,10 +221,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */,
+				A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */,
 				A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */,
+				A53C21271A7B1CF1002DDDA9 /* MainMenu.png in Resources */,
+				A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */,
 				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
-				A53C20FD1A7B1968002DDDA9 /* GameScene.sks in Resources */,
+				A53C21261A7B1CF1002DDDA9 /* background2.png in Resources */,
 				A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */,
+				A53C21251A7B1CF1002DDDA9 /* background1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
