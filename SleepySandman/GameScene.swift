@@ -58,9 +58,13 @@ class GameScene: SKScene {
         
         zombie.position = CGPoint(x: 400, y: 400)
         addChild(zombie)
+        spawnEnemy()
         
-        //zombie.setScale(2.0) // SKNode method
-        debugDrawPlayableArea()
+        runAction(SKAction.repeatActionForever(
+            SKAction.sequence([SKAction.runBlock(spawnEnemy),
+                SKAction.waitForDuration(2.0)])))
+       
+//        debugDrawPlayableArea()
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -149,6 +153,23 @@ class GameScene: SKScene {
         let shortest = shortestAngleBetween(sprite.zRotation, velocity.angle)
         let amountToRotate = min(rotateRadiansPerSec * CGFloat(dt), abs(shortest))
         sprite.zRotation += shortest.sign() * amountToRotate
+    }
+    
+    func spawnEnemy()
+    {
+        let enemy = SKSpriteNode(imageNamed: "enemy")
+        enemy.name = "enemy"
+        enemy.position = CGPoint(
+            x: size.width + enemy.size.width/2,
+            y: CGFloat.random(
+                min: CGRectGetMinY(playableRect) + enemy.size.height/2,
+                max: CGRectGetMaxY(playableRect) - enemy.size.height/2))
+        addChild(enemy)
+        
+        let actionMove =
+        SKAction.moveToX(-enemy.size.width/2, duration: 2.0)
+        let actionRemove = SKAction.removeFromParent()
+        enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
     }
     
     

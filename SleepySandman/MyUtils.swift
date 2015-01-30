@@ -68,7 +68,8 @@ func /= (inout point: CGPoint, scalar: CGFloat) {
     }
 #endif
 
-extension CGPoint {
+extension CGPoint
+{
     
     func length() -> CGFloat {
         return sqrt(x*x + y*y)
@@ -98,8 +99,25 @@ func shortestAngleBetween(angle1: CGFloat,
         return angle
 }
 
-extension CGFloat {
-    func sign() -> CGFloat {
+extension CGFloat
+    {
+    func sign() -> CGFloat
+    {
         return (self >= 0.0) ? 1.0 : -1.0
+    }
+}
+
+
+extension CGFloat
+    {
+    static func random() -> CGFloat
+    {
+        return CGFloat(Float(arc4random()) / Float(UInt32.max))
+    }
+    
+    static func random(#min: CGFloat, max: CGFloat) -> CGFloat
+    {
+        assert(min < max)
+        return CGFloat.random() * (max - min) + min
     }
 }
