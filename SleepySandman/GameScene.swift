@@ -126,6 +126,7 @@ class GameScene: SKScene {
         }
         
         boundsCheckZombie()
+        moveTrain()
 //        checkCollisions()
         
     }
@@ -278,6 +279,7 @@ class GameScene: SKScene {
     func zombieHitSheep(sheep: SKSpriteNode) {
         runAction(sheepCollisionSound)
         sheep.name = "train"
+        sheep.removeAllActions()
         sheep.setScale(1.0)
         sheep.zRotation = 0
         let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
@@ -335,7 +337,23 @@ class GameScene: SKScene {
         }
     }
     
-    
+    func moveTrain() {
+        var targetPosition = zombie.position
+        
+        enumerateChildNodesWithName("train") {
+            node, _ in
+            if !node.hasActions() {
+                let actionDuration = 0.3
+                let offset = targetPosition - node.position
+                let direction = offset.normalized()
+                let amountToMovePerSec = direction * self.catMovePointsPerSec
+                let amountToMove = amountToMovePerSec * CGFloat(actionDuration)
+                let moveAction = SKAction.moveByX(amountToMove.x, y: amountToMove.y, duration: actionDuration)
+                node.runAction(moveAction)
+            }
+            targetPosition = node.position
+        }
+    }
     
     
     
