@@ -9,6 +9,8 @@
 import SpriteKit
 
 class GameScene: SKScene {
+
+
     
     let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
     let zombie: SKSpriteNode = SKSpriteNode(imageNamed: "zombie1")
@@ -27,10 +29,22 @@ class GameScene: SKScene {
     var lives = 5
     var gameOver = false
     
+    
     let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "Bloop.wav", waitForCompletion: false)
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "hitCatLady.wav", waitForCompletion: false)
+    
+    
+//    
+//    func equations() {
+//        
+//        let path = NSBundle.mainBundle(),pathForResource("Math", ofType: "plist")
+//        let dict = NSDictionary(contentsOfFile: path)
+//    
+//    }
+
+
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1

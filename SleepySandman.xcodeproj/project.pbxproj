@@ -27,6 +27,7 @@
 		A5810A761A7C47D200D52532 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A711A7C47D200D52532 /* win.wav */; };
 		A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */; };
 		A5E6AA051A7B3CED003F6271 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = A5E6AA041A7B3CED003F6271 /* background1.png */; };
+		A5ECD0441A7C5D390069D53B /* Math.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5ECD0431A7C5D390069D53B /* Math.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		A5810A711A7C47D200D52532 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
 		A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
 		A5E6AA041A7B3CED003F6271 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
+		A5ECD0431A7C5D390069D53B /* Math.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Math.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				A53C21241A7B1CF1002DDDA9 /* sprites.atlas */,
 				A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */,
 				A53C20FE1A7B1968002DDDA9 /* GameScene.swift */,
+				A5ECD0431A7C5D390069D53B /* Math.plist */,
 				A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */,
 				A53C21001A7B1968002DDDA9 /* GameViewController.swift */,
 				A53C21021A7B1968002DDDA9 /* Main.storyboard */,
@@ -264,6 +267,7 @@
 				A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */,
 				A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */,
 				A53C21261A7B1CF1002DDDA9 /* background2.png in Resources */,
+				A5ECD0441A7C5D390069D53B /* Math.plist in Resources */,
 				A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
