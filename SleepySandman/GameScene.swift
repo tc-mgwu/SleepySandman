@@ -23,6 +23,10 @@ class GameScene: SKScene {
     let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
     var invincible = false
     let zombieAnimation: SKAction
+    
+    var lives = 5
+    var gameOver = false
+    
     let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "Bloop.wav", waitForCompletion: false)
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
@@ -79,7 +83,7 @@ class GameScene: SKScene {
         addChild(background)
         
         let mySize = background.size
-        println("Size: \(mySize)")
+//        println("Size: \(mySize)")
         
         zombie.zPosition = 100
         zombie.position = CGPoint(x: 400, y: 400)
@@ -107,7 +111,7 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
-        println("\(dt*1000) milliseconds since last update")
+//        println("\(dt*1000) milliseconds since last update")
         
         if let lastTouch = lastTouchLocation
         {
@@ -129,6 +133,13 @@ class GameScene: SKScene {
         moveTrain()
 //        checkCollisions()
         
+        
+        if lives <= 0 && !gameOver {
+            gameOver = true
+            println("You lose!")
+        }
+        
+        
     }
     override func didEvaluateActions() {
         checkCollisions()
@@ -136,7 +147,7 @@ class GameScene: SKScene {
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = velocity * CGFloat(dt)
-        println("Amount to move: \(amountToMove)")
+//        println("Amount to move: \(amountToMove)")
         sprite.position += amountToMove
     }
     
@@ -290,6 +301,9 @@ class GameScene: SKScene {
     
     func zombieHitEnemy(enemy: SKSpriteNode) {
         runAction(enemyCollisionSound)
+        loseCats()
+        lives--
+        
         invincible = true
        
         let blinkTimes = 10.0
@@ -339,9 +353,12 @@ class GameScene: SKScene {
     
     func moveTrain() {
         var targetPosition = zombie.position
-        
+        var trainCount = 0
+            
         enumerateChildNodesWithName("train") {
             node, _ in
+            trainCount++
+        
             if !node.hasActions() {
                 let actionDuration = 0.3
                 let offset = targetPosition - node.position
@@ -353,9 +370,43 @@ class GameScene: SKScene {
             }
             targetPosition = node.position
         }
+            
+            if trainCount >= 30 && !gameOver {
+                gameOver = true
+                println("You win!")
+            }
     }
     
-    
-    
+    func loseCats() {
+        // variable to track number of sheep removed from line
+        var loseCount = 0
+        enumerateChildNodesWithName("train") { node, stop in
+           
+            // find random offset from sheep's current pos
+            var randomSpot = node.position
+            randomSpot.x += CGFloat.random(min: -100, max: 100)
+            randomSpot.y += CGFloat.random(min: -100, max: 100)
+            // run animation to make sheep move toward a random spot, spin around
+            //and scale to 0, then remove sheep from scene. set sheep's name to an 
+            //empty string so it's not longer considered a sheep
+            node.name = ""
+            node.runAction(
+                SKAction.sequence([
+                SKAction.group([
+                    SKAction.rotateByAngle(π*4, duration: 1.0),
+                    SKAction.moveTo(randomSpot, duration: 1.0),
+                    SKAction.scaleTo(0, duration: 1.0)
+                    ]),
+                SKAction.removeFromParent()
+                ]))
+            // update variable that is tracking the number of sheep you've removed
+            //once you remove 2 or more, stop enumerating line of sheep
+            loseCount++
+            if loseCount >= 2 {
+                stop.memory = true
+            }
+        }
+    }
+
     
 }
