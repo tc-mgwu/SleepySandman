@@ -7,6 +7,7 @@
 //
 
 import SpriteKit
+import Foundation
 
 class GameScene: SKScene {
 
@@ -421,6 +422,33 @@ class GameScene: SKScene {
             }
         }
     }
+    
+    
+    //random math things
+    func generateNumber1() -> UInt32 {
+        
+        //generate random number from 1-100
+        return arc4random_uniform(100) + 1
+  
+    }
 
+    
+    func generateNumber2() -> UInt32 {
+        
+        //generate random number from 1-100
+        return arc4random_uniform(100) + 1
+        
+    }
+    
+    func spawnMath() {
+        let numberFirst = generateNumber1()
+        let numberSecond = generateNumber2()
+        
+        let answer = numberFirst + numberSecond
+        
+    
+    
+    
+    }
     
 }
