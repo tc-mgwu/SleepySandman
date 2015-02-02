@@ -303,6 +303,7 @@ class GameScene: SKScene {
     
     
     func zombieHitSheep(sheep: SKSpriteNode) {
+        spawnMath()
         runAction(sheepCollisionSound)
         sheep.name = "train"
         sheep.removeAllActions()
@@ -441,13 +442,20 @@ class GameScene: SKScene {
     }
     
     func spawnMath() {
-        let numberFirst = generateNumber1()
-        let numberSecond = generateNumber2()
+        //variables are set to change
+        var numberFirst = generateNumber1()
+        var numberSecond = generateNumber2()
         
-        let answer = numberFirst + numberSecond
+     
+        //constant answer will always be n1+n2
+        let equation = numberFirst + numberSecond
+        let answer = equation
         
-    
-    
+        //print values
+        println("first value: \(numberFirst)")
+        println("second value: \(numberSecond)")
+        println("answer: \(answer)")
+
     
     }
     
