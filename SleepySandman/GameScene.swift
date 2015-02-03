@@ -87,7 +87,7 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView)
     {
-        
+        playBackgroundMusic("BackgroundMusic.mp3")
         backgroundColor = SKColor.whiteColor()
         
         let background = SKSpriteNode(imageNamed: "background1")
@@ -152,6 +152,7 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver = true
             println("You lose!")
+            backgroundMusicPlayer.stop()
             
             
             // create a new scene by creating an instance of the new scene itself
@@ -403,6 +404,7 @@ class GameScene: SKScene {
                 gameOver = true
                 println("You win!")
                 
+                backgroundMusicPlayer.stop()
                 // create a new scene by creating an instance of the new scene itself
                 let gameOverScene = GameOverScene(size: size, won: true)
                 gameOverScene.scaleMode = scaleMode
