@@ -152,6 +152,18 @@ class GameScene: SKScene {
         if lives <= 0 && !gameOver {
             gameOver = true
             println("You lose!")
+            
+            
+            // create a new scene by creating an instance of the new scene itself
+            let gameOverScene = GameOverScene(size: size)
+            gameOverScene.scaleMode = scaleMode
+            
+            // create a transition object
+            let reveal = SKTransition.crossFadeWithDuration(0.5)
+            
+            //call SKview's presentScene(transition:) method
+            view?.presentScene(gameOverScene, transition: reveal)
+            
         }
         
         
@@ -390,6 +402,17 @@ class GameScene: SKScene {
             if trainCount >= 30 && !gameOver {
                 gameOver = true
                 println("You win!")
+                
+                // create a new scene by creating an instance of the new scene itself
+                let gameOverScene = GameOverScene(size: size)
+                gameOverScene.scaleMode = scaleMode
+                
+                // create a transition object
+                let reveal = SKTransition.crossFadeWithDuration(0.5)
+              
+                //call SKview's presentScene(transition:) method
+                view?.presentScene(gameOverScene, transition: reveal)
+                
             }
     }
     
