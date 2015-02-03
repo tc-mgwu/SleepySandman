@@ -155,7 +155,7 @@ class GameScene: SKScene {
             
             
             // create a new scene by creating an instance of the new scene itself
-            let gameOverScene = GameOverScene(size: size)
+            let gameOverScene = GameOverScene(size: size, won: false)
             gameOverScene.scaleMode = scaleMode
             
             // create a transition object
@@ -399,12 +399,12 @@ class GameScene: SKScene {
             targetPosition = node.position
         }
             
-            if trainCount >= 30 && !gameOver {
+            if trainCount >= 10 && !gameOver {
                 gameOver = true
                 println("You win!")
                 
                 // create a new scene by creating an instance of the new scene itself
-                let gameOverScene = GameOverScene(size: size)
+                let gameOverScene = GameOverScene(size: size, won: true)
                 gameOverScene.scaleMode = scaleMode
                 
                 // create a transition object
