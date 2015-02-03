@@ -14,18 +14,18 @@ class GameScene: SKScene {
 
     
     let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
-    let zombie: SKSpriteNode = SKSpriteNode(imageNamed: "zombie1")
+    let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
-    let zombieMovePointsPerSec: CGFloat = 480.0
+    let sandmanMovePointsPerSec: CGFloat = 480.0
     let catMovePointsPerSec:CGFloat = 480.0
 
     var velocity = CGPointZero
     let playableRect: CGRect
     var lastTouchLocation: CGPoint?
-    let zombieRotateRadiansPerSec:CGFloat = 4.0 * π
+    let sandmanRotateRadiansPerSec:CGFloat = 4.0 * π
     var invincible = false
-    let zombieAnimation: SKAction
+    let sandmanAnimation: SKAction
     
     var lives = 5
     var gameOver = false
@@ -60,12 +60,12 @@ class GameScene: SKScene {
         var textures:[SKTexture] = []
         //string setup
         for i in 1...4 {
-            textures.append(SKTexture(imageNamed: "zombie\(i)"))
+            textures.append(SKTexture(imageNamed: "sandman\(i)"))
         }
         textures.append(textures[2])
         textures.append(textures[1])
         
-        zombieAnimation = SKAction.repeatActionForever(
+       sandmanAnimation = SKAction.repeatActionForever(
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size) // 5
@@ -100,9 +100,9 @@ class GameScene: SKScene {
         let mySize = background.size
 //        println("Size: \(mySize)")
         
-        zombie.zPosition = 100
-        zombie.position = CGPoint(x: 400, y: 400)
-        addChild(zombie)
+       sandman.zPosition = 100
+        sandman.position = CGPoint(x: 400, y: 400)
+        addChild(sandman)
         
         //spawn enemies forever
         runAction(SKAction.repeatActionForever(
@@ -130,21 +130,21 @@ class GameScene: SKScene {
         
         if let lastTouch = lastTouchLocation
         {
-            let diff = lastTouch - zombie.position
-            if (diff.length() <= zombieMovePointsPerSec * CGFloat(dt))
+            let diff = lastTouch - sandman.position
+            if (diff.length() <= sandmanMovePointsPerSec * CGFloat(dt))
             {
-                zombie.position = lastTouchLocation!
+                sandman.position = lastTouchLocation!
                 velocity = CGPointZero
-                stopZombieAnimation()
+                stopSandmanAnimation()
             }
             else
             {
-                moveSprite(zombie, velocity: velocity)
-                rotateSprite(zombie, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
+                moveSprite(sandman, velocity: velocity)
+                rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: sandmanRotateRadiansPerSec)
             }
         }
         
-        boundsCheckZombie()
+        boundsCheckSandman()
         moveTrain()
 //        checkCollisions()
         
@@ -179,17 +179,17 @@ class GameScene: SKScene {
         sprite.position += amountToMove
     }
     
-    func moveZombieToward(location: CGPoint)
+    func moveSandmanToward(location: CGPoint)
     {
-        startZombieAnimation()
-        let offset = location - zombie.position
+        startSandmanAnimation()
+        let offset = location - sandman.position
         let direction = offset.normalized()
-        velocity = direction * zombieMovePointsPerSec
+        velocity = direction * sandmanMovePointsPerSec
     }
     
     func sceneTouched(touchLocation:CGPoint) {
         lastTouchLocation = touchLocation
-        moveZombieToward(touchLocation)
+        moveSandmanToward(touchLocation)
     }
     
     override func touchesBegan(touches: NSSet,
@@ -206,27 +206,27 @@ class GameScene: SKScene {
             sceneTouched(touchLocation)
     }
     
-    func boundsCheckZombie() {
+    func boundsCheckSandman() {
         let bottomLeft = CGPoint(x: 0,
             y: CGRectGetMinY(playableRect))
         let topRight = CGPoint(x: size.width,
             y: CGRectGetMaxY(playableRect))
         
         
-        if zombie.position.x <= bottomLeft.x {
-            zombie.position.x = bottomLeft.x
+        if sandman.position.x <= bottomLeft.x {
+            sandman.position.x = bottomLeft.x
             velocity.x = -velocity.x
         }
-        if zombie.position.x >= topRight.x {
-            zombie.position.x = topRight.x
+        if sandman.position.x >= topRight.x {
+            sandman.position.x = topRight.x
             velocity.x = -velocity.x
         }
-        if zombie.position.y <= bottomLeft.y {
-            zombie.position.y = bottomLeft.y
+        if sandman.position.y <= bottomLeft.y {
+            sandman.position.y = bottomLeft.y
             velocity.y = -velocity.y
         }
-        if zombie.position.y >= topRight.y {
-            zombie.position.y = topRight.y
+        if sandman.position.y >= topRight.y {
+            sandman.position.y = topRight.y
             velocity.y = -velocity.y
         } 
     }
@@ -261,18 +261,18 @@ class GameScene: SKScene {
     }
     
     //MAIN CHARACTER ANIMATION: tags animation key
-    func startZombieAnimation()
+    func startSandmanAnimation()
     {
-        if zombie.actionForKey("animation") == nil
+        if sandman.actionForKey("animation") == nil
         {
-        zombie.runAction(
-            SKAction.repeatActionForever(zombieAnimation),
+        sandman.runAction(
+            SKAction.repeatActionForever(sandmanAnimation),
             withKey: "animation")
         }
     }
     //stops animation with key "animation"
-    func stopZombieAnimation() {
-        zombie.removeActionForKey("animation")
+    func stopSandmanAnimation() {
+        sandman.removeActionForKey("animation")
     }
 
     //SPAWN SHEEP
@@ -315,7 +315,7 @@ class GameScene: SKScene {
     }
     
     
-    func zombieHitSheep(sheep: SKSpriteNode) {
+    func sandmanHitSheep(sheep: SKSpriteNode) {
         spawnMath()
         runAction(sheepCollisionSound)
         sheep.name = "train"
@@ -328,9 +328,9 @@ class GameScene: SKScene {
     }
     
     
-    func zombieHitEnemy(enemy: SKSpriteNode) {
+    func sandmanHitEnemy(enemy: SKSpriteNode) {
         runAction(enemyCollisionSound)
-        loseCats()
+        loseSheep()
         lives--
         
         invincible = true
@@ -343,10 +343,10 @@ class GameScene: SKScene {
             node.hidden = remainder > slice / 2
         }
         let setHidden = SKAction.runBlock() {
-            self.zombie.hidden = false
+            self.sandman.hidden = false
             self.invincible = false
         }
-        zombie.runAction(SKAction.sequence([blinkAction, setHidden]))
+        sandman.runAction(SKAction.sequence([blinkAction, setHidden]))
    
     }
     
@@ -355,12 +355,12 @@ class GameScene: SKScene {
         enumerateChildNodesWithName("sheep") { node, _ in
         let sheep = node as SKSpriteNode
        
-        if CGRectIntersectsRect(sheep.frame, self.zombie.frame) {
+        if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
         hitSheep.append(sheep)
         }
         }
         for sheep in hitSheep {
-        zombieHitSheep(sheep)
+        sandmanHitSheep(sheep)
         }
         
         if invincible {
@@ -371,17 +371,17 @@ class GameScene: SKScene {
         enumerateChildNodesWithName("enemy") { node, _ in
         let enemy = node as SKSpriteNode
         if CGRectIntersectsRect(
-        CGRectInset(node.frame, 20, 20), self.zombie.frame) {
+        CGRectInset(node.frame, 20, 20), self.sandman.frame) {
         hitEnemies.append(enemy)
         }
         }
         for enemy in hitEnemies {
-        zombieHitEnemy(enemy)
+        sandmanHitEnemy(enemy)
         }
     }
     
     func moveTrain() {
-        var targetPosition = zombie.position
+        var targetPosition = sandman.position
         var trainCount = 0
             
         enumerateChildNodesWithName("train") {
@@ -418,7 +418,7 @@ class GameScene: SKScene {
             }
     }
     
-    func loseCats() {
+    func loseSheep() {
         // variable to track number of sheep removed from line
         var loseCount = 0
         enumerateChildNodesWithName("train") { node, stop in
