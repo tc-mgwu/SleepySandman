@@ -133,6 +133,7 @@ class GameScene: SKScene {
             let diff = lastTouch - sandman.position
             if (diff.length() <= sandmanMovePointsPerSec * CGFloat(dt))
             {
+                 sandman.xScale = 1
                 sandman.position = lastTouchLocation!
                 velocity = CGPointZero
                 stopSandmanAnimation()
@@ -140,7 +141,9 @@ class GameScene: SKScene {
             else
             {
                 moveSprite(sandman, velocity: velocity)
-                rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: sandmanRotateRadiansPerSec)
+                sandman.xScale = -1
+//                
+//                rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: sandmanRotateRadiansPerSec)
             }
         }
         
