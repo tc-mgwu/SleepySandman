@@ -343,6 +343,14 @@ class GameScene: SKScene {
         let removeFromParent = SKAction.removeFromParent()
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
+        
+        let sheepLabel = SKLabelNode(fontNamed: "Arial")
+        sheepLabel.name = "sheepmathproblem"
+        sheepLabel.fontColor = SKColor.darkGrayColor()
+        sheepLabel.fontSize = 30
+        sheepLabel.text = "some text"
+        sheepLabel.position = sheep.position
+        addChild(sheepLabel)
    
     }
     
