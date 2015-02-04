@@ -11,7 +11,12 @@ import Foundation
 
 class GameScene: SKScene {
 
-
+    let hudHeight: CGFloat = 60
+    let scoreLabel = SKLabelNode(fontNamed: "Edit Undo Line BRK")
+    let healthBarString: NSString = "===================="
+    let playerHealthLabel = SKLabelNode(fontNamed: "Arial")
+     var score = 0
+    let hudLayerNode = SKNode()
     
     let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
@@ -45,7 +50,28 @@ class GameScene: SKScene {
 //    
 //    }
 
+    func setUpUI() {
+        let backgroundSize = CGSize(width: size.width, height: hudHeight)
+        let backgroundColor = SKColor.blackColor()
+        let hudBarBackground = SKSpriteNode(color: backgroundColor, size: backgroundSize)
+        
+        hudBarBackground.position = CGPoint(x:0, y: size.height - hudHeight)
+        hudBarBackground.anchorPoint = CGPointZero
+        hudLayerNode.addChild(hudBarBackground)
+        
+        scoreLabel.fontSize = 35
+        scoreLabel.text = "Score: 0"
+        scoreLabel.name = "scoreLabel"
+        
+        scoreLabel.verticalAlignmentMode = .Center
+        scoreLabel.position = CGPoint(
+            x: size.width / 2,
+            y: size.height - scoreLabel.frame.size.height + 3)
+            
+            hudLayerNode.addChild(scoreLabel)
 
+    
+    }
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
@@ -69,6 +95,9 @@ class GameScene: SKScene {
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size) // 5
+        
+        
+        setUpUI()
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -133,7 +162,7 @@ class GameScene: SKScene {
             let diff = lastTouch - sandman.position
             if (diff.length() <= sandmanMovePointsPerSec * CGFloat(dt))
             {
-                 sandman.xScale = 1
+//                 sandman.xScale = 1
                 sandman.position = lastTouchLocation!
                 velocity = CGPointZero
                 stopSandmanAnimation()
@@ -141,8 +170,8 @@ class GameScene: SKScene {
             else
             {
                 moveSprite(sandman, velocity: velocity)
-                sandman.xScale = -1
-//                
+//                sandman.xScale = -1
+//
 //                rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: sandmanRotateRadiansPerSec)
             }
         }
