@@ -17,8 +17,7 @@ class GameScene: SKScene {
     let playerHealthLabel = SKLabelNode(fontNamed: "Arial")
      var score = 0
     let hudLayerNode = SKNode()
-    
-    let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
+       let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -40,15 +39,7 @@ class GameScene: SKScene {
         "Bloop.wav", waitForCompletion: false)
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "hitCatLady.wav", waitForCompletion: false)
-    
-    
-//    
-//    func equations() {
-//        
-//        let path = NSBundle.mainBundle(),pathForResource("Math", ofType: "plist")
-//        let dict = NSDictionary(contentsOfFile: path)
-//    
-//    }
+
 
     func setUpUI() {
         let backgroundSize = CGSize(width: size.width, height: hudHeight)
@@ -174,6 +165,13 @@ class GameScene: SKScene {
 //
 //                rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: sandmanRotateRadiansPerSec)
             }
+            
+//            if lastTouchLocation.x<= UIView.width/2
+//            {
+//                sandman.xScale = -1
+//            
+//            }
+            
         }
         
         boundsCheckSandman()
@@ -310,7 +308,7 @@ class GameScene: SKScene {
     //SPAWN SHEEP
     func spawnSheep()
     {
-        //spawn cat at random location
+        //spawn sheep at random location
         let sheep = SKSpriteNode(imageNamed: "sheep")
         sheep.name = "sheep"
         sheep.position = CGPoint(
@@ -344,6 +342,7 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
+        
         let sheepLabel = SKLabelNode(fontNamed: "Arial")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
@@ -351,6 +350,7 @@ class GameScene: SKScene {
         sheepLabel.text = "some text"
         sheepLabel.position = sheep.position
         addChild(sheepLabel)
+        
    
     }
     
@@ -364,6 +364,8 @@ class GameScene: SKScene {
         sheep.zRotation = 0
         let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
             sheep.runAction(turnColor)
+        
+        
     
     }
     
@@ -514,7 +516,8 @@ class GameScene: SKScene {
      
         //constant answer will always be n1+n2
         let equation = numberFirst + numberSecond
-        let answer = equation
+        var answer = equation
+        
         
         //print values
         println("first value: \(numberFirst)")
