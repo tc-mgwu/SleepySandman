@@ -17,8 +17,8 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Avenir","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
+	font-family: "Raleway", Century Gothic, sans-serif;    
+	font-weight: 400;
 }
 
 .topnav {
@@ -66,7 +66,7 @@ img.ri
 
 .intro-message > h1 {
     margin: 0;
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+	color: #f8f8f8
     font-size: 5em;
 }
 
@@ -77,7 +77,8 @@ img.ri
 }
 
 .intro-message > h3 {
-    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    color: #f8f8f8;
+	text-transform: ;
 }
 
 @media(max-width:767px) {
@@ -193,3 +194,25 @@ footer {
 p.copyright {
     margin: 15px 0 0;
 }
+
+
+
+
+.features{
+  padding: 0;
+}
+
+.feature-wrap {
+ margin: 10px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.feature-wrap h2{
+  margin-top: 10px;
+}
+
+.feature-wrap .pull-left {
+  margin-right: 25px;
+}
+
