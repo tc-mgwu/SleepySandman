@@ -17,24 +17,18 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Lato","Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 700;
+    font-family: "Avenir","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 400;
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 22px; 
+	
 }
 
 .lead {
     font-size: 18px;
     font-weight: 400;
-}
-.intro-logo {
-	image-orientation: center;
-	padding: 20px;
-	
-	
-	
 }
 .intro-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
@@ -167,8 +161,10 @@ h6 {
 }
 
 footer {
-    padding: 50px 0;
-    background-color: #f8f8f8;
+    padding: 20px 0;
+	text-align: center;
+	color: #f8f8f8;
+    background-color: black;
 }
 
 p.copyright {
