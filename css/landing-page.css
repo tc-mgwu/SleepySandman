@@ -39,7 +39,7 @@ img.ri
 	top: 10%;
 	left: 10%;
 	border-radius: 3px;
-	box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+	
 }
 
 @media screen and (orientation: portrait) {
