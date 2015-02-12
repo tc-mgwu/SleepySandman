@@ -22,13 +22,32 @@ h6 {
 }
 
 .topnav {
-    font-size: 22px; 
+    font-size: 18px; 
 	
 }
 
 .lead {
     font-size: 18px;
     font-weight: 400;
+}
+
+img.ri
+{
+	position: center;
+	max-width: 80%;
+	height: auto;
+	top: 10%;
+	left: 10%;
+	border-radius: 3px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.9);
+}
+
+@media screen and (orientation: portrait) {
+  img.ri { max-width: 90%; }
+}
+
+@media screen and (orientation: landscape) {
+  img.ri { max-height: 90%; }
 }
 .intro-header {
     padding-top: 50px; /* If you're making other pages, make sure there is 50px of padding to make sure the navbar doesn't overlap content! */
@@ -62,6 +81,7 @@ h6 {
 }
 
 @media(max-width:767px) {
+	
     .intro-message {
         padding-bottom: 15%;
     }
@@ -139,10 +159,13 @@ h6 {
     ul.banner-social-buttons {
         float: left;
         margin-top: 15px;
+
     }
 }
 
 @media(max-width:767px) {
+
+
     .banner h2 {
         margin: 0;
         text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
