@@ -348,8 +348,8 @@ class GameScene: SKScene {
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
         sheepLabel.text = "some text"
-        sheepLabel.position = sheep.position
-        addChild(sheepLabel)
+//        sheepLabel.position = sheep.position
+        sheep.addChild(sheepLabel)
         
    
     }
@@ -365,7 +365,7 @@ class GameScene: SKScene {
         let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
             sheep.runAction(turnColor)
         
-        
+        sheep.removeAllChildren()
     
     }
     
