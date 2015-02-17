@@ -37,7 +37,7 @@ class GameScene: SKScene {
     var lives = 5
     var gameOver = false
     
-    let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "Ariel")
+    let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "MERKIN")
 
     
     let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
@@ -357,7 +357,7 @@ class GameScene: SKScene {
         
         //generate number between 1-10 and print as string
         let myString = String(generateNumber3())
-        let sheepLabel = SKLabelNode(fontNamed: "Arial")
+        let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
@@ -375,8 +375,8 @@ class GameScene: SKScene {
         
      playerLabel.text = equationString
      playerLabel.fontColor = SKColor.darkGrayColor()
-     playerLabel.position = CGPoint(x:sandman.size.width-140, y:sandman.size.height-340)
-     playerLabel.fontSize = 35;
+     playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
+     playerLabel.fontSize = 32;
      sandman.addChild(playerLabel)
     
     }
