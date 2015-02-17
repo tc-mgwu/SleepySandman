@@ -353,8 +353,8 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-        spawnMath()
-        let myString = String(numberFirst)
+        //generate number between 1-10 and print as string
+        let myString = String(generateNumber3())
         let sheepLabel = SKLabelNode(fontNamed: "Arial")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
@@ -377,10 +377,10 @@ class GameScene: SKScene {
         runAction(sheepCollisionSound)
         sheep.name = "train"
         sheep.removeAllActions()
-        sheep.setScale(1.0)
+        sheep.setScale(0.8)
         sheep.zRotation = 0
-        let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
-            sheep.runAction(turnColor)
+//        let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
+//            sheep.runAction(turnColor)
         
         sheep.removeAllChildren()
     
@@ -513,7 +513,7 @@ class GameScene: SKScene {
     func generateNumber1() -> UInt32 {
         
         //generate random number from 1-10
-        return arc4random_uniform(10) + 1
+        return arc4random_uniform(5) + 1
   
     }
 
@@ -525,10 +525,17 @@ class GameScene: SKScene {
         
     }
     
+    func generateNumber3() -> UInt32 {
+        
+        //generate random number from 1-10
+        return arc4random_uniform(20) + 1
+        
+    }
+    
     func spawnMath() {
         //variables are set to change
-        var number1 = generateNumber1()
-        var number2 = generateNumber2()
+       let numberFirst = generateNumber1()
+        let numberSecond = generateNumber2()
         
      
         //constant answer will always be n1+n2
