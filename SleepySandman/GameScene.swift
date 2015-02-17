@@ -134,7 +134,7 @@ class GameScene: SKScene {
        sandman.zPosition = 100
         sandman.position = CGPoint(x: 400, y: 400)
         addChild(sandman)
-        
+        spawnEquation()
         //spawn enemies forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnEnemy),
@@ -367,8 +367,10 @@ class GameScene: SKScene {
     }
     
     func spawnEquation() {
-     playerLabel.text = "I'm the player"
-    
+     spawnMath()
+     let equationString = String(generateNumber3())
+     playerLabel.text = equationString
+    sandman.addChild(playerLabel)
     
     }
     
