@@ -15,9 +15,8 @@ class GameScene: SKScene {
     let scoreLabel = SKLabelNode(fontNamed: "Edit Undo Line BRK")
     let healthBarString: NSString = "===================="
     let playerHealthLabel = SKLabelNode(fontNamed: "Arial")
-     var score = 0
+    var score = 0
     let hudLayerNode = SKNode()
-       let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -31,9 +30,15 @@ class GameScene: SKScene {
     var invincible = false
     let sandmanAnimation: SKAction
     
+    var numberFirst = 0
+    var numberSecond = 0
+    var equation = 0
+    var answer = 0
     var lives = 5
     var gameOver = false
     
+    let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "Ariel")
+
     
     let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "Bloop.wav", waitForCompletion: false)
@@ -71,6 +76,12 @@ class GameScene: SKScene {
         playableRect = CGRect(x: 0, y: playableMargin,
             width: size.width,
             height: playableHeight) // 4
+        
+        
+        //swift let variables must be assigned when created, but they changed this with the new swift
+        //before, you couldn't do: let x if (a) x= a else x = b
+        let equation = numberFirst + numberSecond
+        let answer = equation
         
         //animate character
         //create array to store all textures
@@ -272,7 +283,6 @@ class GameScene: SKScene {
     //SPAWN ENEMY
     func spawnEnemy()
     {
-        label.text = "I'm the player"
         
         let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.name = "enemy"
@@ -354,6 +364,11 @@ class GameScene: SKScene {
    
     }
     
+    func spawnEquation() {
+     playerLabel.text = "I'm the player"
+    
+    
+    }
     
     func sandmanHitSheep(sheep: SKSpriteNode) {
         spawnMath()
@@ -495,23 +510,23 @@ class GameScene: SKScene {
     //random math things
     func generateNumber1() -> UInt32 {
         
-        //generate random number from 1-100
-        return arc4random_uniform(100) + 1
+        //generate random number from 1-10
+        return arc4random_uniform(10) + 1
   
     }
 
     
     func generateNumber2() -> UInt32 {
         
-        //generate random number from 1-100
-        return arc4random_uniform(100) + 1
+        //generate random number from 1-10
+        return arc4random_uniform(10) + 1
         
     }
     
     func spawnMath() {
         //variables are set to change
-        var numberFirst = generateNumber1()
-        var numberSecond = generateNumber2()
+        var number1 = generateNumber1()
+        var number2 = generateNumber2()
         
      
         //constant answer will always be n1+n2
