@@ -372,9 +372,11 @@ class GameScene: SKScene {
      spawnMath()
 //     let equationString = String(generateNumber3() + generateNumber2())
     let equationString = String(format: "%d + %d", generateNumber1(), generateNumber2())
+        
      playerLabel.text = equationString
      playerLabel.fontColor = SKColor.darkGrayColor()
-     playerLabel.position = CGPoint(x:sandman.size.width, y:sandman.size.height/2)
+     playerLabel.position = CGPoint(x:sandman.size.width-140, y:sandman.size.height-340)
+     playerLabel.fontSize = 35;
      sandman.addChild(playerLabel)
     
     }
@@ -390,6 +392,8 @@ class GameScene: SKScene {
 //            sheep.runAction(turnColor)
         
         sheep.removeAllChildren()
+        sandman.removeAllChildren()
+        spawnEquation()
     
     }
     
