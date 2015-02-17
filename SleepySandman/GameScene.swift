@@ -131,10 +131,12 @@ class GameScene: SKScene {
         let mySize = background.size
 //        println("Size: \(mySize)")
         
-       sandman.zPosition = 100
+        sandman.zPosition = 100
         sandman.position = CGPoint(x: 400, y: 400)
         addChild(sandman)
         spawnEquation()
+        
+        
         //spawn enemies forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnEnemy),
@@ -368,9 +370,12 @@ class GameScene: SKScene {
     
     func spawnEquation() {
      spawnMath()
-     let equationString = String(generateNumber3())
+//     let equationString = String(generateNumber3() + generateNumber2())
+    let equationString = String(format: "%d + %d", generateNumber1(), generateNumber2())
      playerLabel.text = equationString
-    sandman.addChild(playerLabel)
+     playerLabel.fontColor = SKColor.darkGrayColor()
+     playerLabel.position = CGPoint(x:sandman.size.width, y:sandman.size.height/2)
+     sandman.addChild(playerLabel)
     
     }
     
