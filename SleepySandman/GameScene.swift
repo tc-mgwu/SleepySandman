@@ -83,6 +83,7 @@ class GameScene: SKScene {
         let equation = numberFirst + numberSecond
         let answer = equation
         
+        
         //animate character
         //create array to store all textures
         var textures:[SKTexture] = []
@@ -97,8 +98,7 @@ class GameScene: SKScene {
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size) // 5
-        
-        
+        spawnMath()
         setUpUI()
     }
     
@@ -318,6 +318,7 @@ class GameScene: SKScene {
     //SPAWN SHEEP
     func spawnSheep()
     {
+        
         //spawn sheep at random location
         let sheep = SKSpriteNode(imageNamed: "sheep")
         sheep.name = "sheep"
@@ -352,12 +353,13 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-        
+        spawnMath()
+        let myString = String(numberFirst)
         let sheepLabel = SKLabelNode(fontNamed: "Arial")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
-        sheepLabel.text = "some text"
+        sheepLabel.text = myString
 //        sheepLabel.position = sheep.position
         sheep.addChild(sheepLabel)
         
