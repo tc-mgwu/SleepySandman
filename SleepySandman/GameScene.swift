@@ -32,10 +32,15 @@ class GameScene: SKScene {
     
     var numberFirst = 0
     var numberSecond = 0
+    var sheepValue = 0
     var equation = 0
     var answer = 0
     var lives = 5
     var gameOver = false
+    
+    
+    
+    
     
     let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "MERKIN")
 
@@ -80,9 +85,9 @@ class GameScene: SKScene {
         
         //swift let variables must be assigned when created, but they changed this with the new swift
         //before, you couldn't do: let x if (a) x= a else x = b
-        let equation = numberFirst + numberSecond
-        let answer = equation
-        
+//        let equation = numberFirst + numberSecond
+//        let answer = equation
+//        
         
         //animate character
         //create array to store all textures
@@ -98,8 +103,10 @@ class GameScene: SKScene {
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size) // 5
-        spawnMath()
+//        spawnMath()
         setUpUI()
+        
+        let equation = numberFirst + numberSecond
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -145,7 +152,7 @@ class GameScene: SKScene {
         //spawn sheep forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
-            SKAction.waitForDuration(1.0)])))
+            SKAction.waitForDuration(2.0)])))
         
 //        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
 //        debugDrawPlayableArea()
@@ -356,7 +363,9 @@ class GameScene: SKScene {
         sheep.runAction(SKAction.sequence(actions))
         
         //generate number between 1-10 and print as string
-        let myString = String(generateNumber3())
+//        let sheepValue = generateNumber3()
+        self.sheepValue = Int(arc4random_uniform(UInt32(10)))
+        let myString = String(sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
@@ -364,15 +373,23 @@ class GameScene: SKScene {
         sheepLabel.text = myString
 //        sheepLabel.position = sheep.position
         sheep.addChild(sheepLabel)
+        println("sheepValue: \(self.sheepValue)")
         
    
     }
     
     func spawnEquation() {
-     spawnMath()
-//     let equationString = String(generateNumber3() + generateNumber2())
-    let equationString = String(format: "%d + %d", generateNumber1(), generateNumber2())
+        //variables are set to change
+    let numberFirst = generateNumber1()
+    let numberSecond = generateNumber2()
         
+        
+    //constant answer will always be n1+n2
+//    let equation = numberFirst + numberSecond
+    let answer = equation
+//     let equationString = String(generateNumber3() + generateNumber2())
+    let equationString = String(format: "%d + %d", numberFirst, numberSecond)
+    let sandmanEquation = equation
      playerLabel.text = equationString
      playerLabel.fontColor = SKColor.darkGrayColor()
      playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
@@ -382,7 +399,7 @@ class GameScene: SKScene {
     }
     
     func sandmanHitSheep(sheep: SKSpriteNode) {
-        spawnMath()
+      
         runAction(sheepCollisionSound)
         sheep.name = "train"
         sheep.removeAllActions()
@@ -426,8 +443,15 @@ class GameScene: SKScene {
         let sheep = node as SKSpriteNode
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
-        hitSheep.append(sheep)
+        if self.sheepValue == self.equation {
+            println("sheepValue: \(self.sheepValue)")
+            println("equation: \(self.equation)")
+            hitSheep.append(sheep)
+            
+            }
+        
         }
+     
         }
         for sheep in hitSheep {
         sandmanHitSheep(sheep)
@@ -524,7 +548,7 @@ class GameScene: SKScene {
     func generateNumber1() -> UInt32 {
         
         //generate random number from 1-10
-        return arc4random_uniform(5) + 1
+        return arc4random_uniform(10) + 1
   
     }
 
