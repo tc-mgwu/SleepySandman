@@ -379,22 +379,26 @@ class GameScene: SKScene {
     }
     
     func spawnEquation() {
-        
+    //change global vars of n1 and n2 by casting uint32 as ints to pick random from 1-5
     self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
     self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
+        
+    //Debug things- print numbers in console
     println("numberFirst: \(self.numberFirst)")
     println("numberSecond: \(self.numberSecond)")
-    //constant answer will always be n1+n2
-//    let equation = numberFirst + numberSecond
+
     let answer = equation
-//     let equationString = String(generateNumber3() + generateNumber2())
+        
+    //convert int to string using formatter
     let equationString = String(format: "%d + %d", numberFirst, numberSecond)
+     
+    //player equation label
     let sandmanEquation = equation
-     playerLabel.text = equationString
-     playerLabel.fontColor = SKColor.darkGrayColor()
-     playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
-     playerLabel.fontSize = 32;
-     sandman.addChild(playerLabel)
+    playerLabel.text = equationString
+    playerLabel.fontColor = SKColor.darkGrayColor()
+    playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
+    playerLabel.fontSize = 32;
+    sandman.addChild(playerLabel)
     
     }
     
