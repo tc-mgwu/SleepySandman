@@ -103,10 +103,10 @@ class GameScene: SKScene {
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size) // 5
-//        spawnMath()
+
         setUpUI()
         
-        let equation = numberFirst + numberSecond
+        
     }
     
     required init(coder aDecoder: NSCoder) {
@@ -166,14 +166,13 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
-//        println("\(dt*1000) milliseconds since last update")
         
         if let lastTouch = lastTouchLocation
         {
             let diff = lastTouch - sandman.position
             if (diff.length() <= sandmanMovePointsPerSec * CGFloat(dt))
             {
-//                 sandman.xScale = 1
+//              sandman.xScale = 1
                 sandman.position = lastTouchLocation!
                 velocity = CGPointZero
                 stopSandmanAnimation()
@@ -225,7 +224,6 @@ class GameScene: SKScene {
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = velocity * CGFloat(dt)
-//        println("Amount to move: \(amountToMove)")
         sprite.position += amountToMove
     }
     
@@ -363,8 +361,7 @@ class GameScene: SKScene {
         sheep.runAction(SKAction.sequence(actions))
         
         //generate number between 1-10 and print as string
-//        let sheepValue = generateNumber3()
-        self.sheepValue = Int(arc4random_uniform(UInt32(12)))
+        self.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
         let myString = String(sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
@@ -382,18 +379,19 @@ class GameScene: SKScene {
     //change global vars of n1 and n2 by casting uint32 as ints to pick random from 1-5
     self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
     self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
-        
+    self.equation = numberFirst + numberSecond
     //Debug things- print numbers in console
     println("numberFirst: \(self.numberFirst)")
     println("numberSecond: \(self.numberSecond)")
 
-    let answer = equation
+    self.answer = self.equation
+    println("equation: \(self.equation)")
         
     //convert int to string using formatter
     let equationString = String(format: "%d + %d", numberFirst, numberSecond)
      
     //player equation label
-    let sandmanEquation = equation
+    let sandmanEquation = self.equation
     playerLabel.text = equationString
     playerLabel.fontColor = SKColor.darkGrayColor()
     playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
