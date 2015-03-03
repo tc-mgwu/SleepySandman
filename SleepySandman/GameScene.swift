@@ -364,26 +364,26 @@ class GameScene: SKScene {
         
         //generate number between 1-10 and print as string
 //        let sheepValue = generateNumber3()
-        self.sheepValue = Int(arc4random_uniform(UInt32(10)))
+        self.sheepValue = Int(arc4random_uniform(UInt32(12)))
         let myString = String(sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
         sheepLabel.text = myString
-//        sheepLabel.position = sheep.position
+
         sheep.addChild(sheepLabel)
-        println("sheepValue: \(self.sheepValue)")
+//        println("sheepValue: \(self.sheepValue)")
         
    
     }
     
     func spawnEquation() {
-        //variables are set to change
-    let numberFirst = generateNumber1()
-    let numberSecond = generateNumber2()
         
-        
+    self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
+    self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
+    println("numberFirst: \(self.numberFirst)")
+    println("numberSecond: \(self.numberSecond)")
     //constant answer will always be n1+n2
 //    let equation = numberFirst + numberSecond
     let answer = equation
@@ -567,23 +567,23 @@ class GameScene: SKScene {
         
     }
     
-    func spawnMath() {
-        //variables are set to change
-       let numberFirst = generateNumber1()
-        let numberSecond = generateNumber2()
-        
-     
-        //constant answer will always be n1+n2
-        let equation = numberFirst + numberSecond
-        var answer = equation
-        
-        
-        //print values
-        println("first value: \(numberFirst)")
-        println("second value: \(numberSecond)")
-        println("answer: \(answer)")
-
-    
-    }
+//    func spawnMath() {
+//        //variables are set to change
+//       let numberFirst = generateNumber1()
+//        let numberSecond = generateNumber2()
+//        
+//     
+//        //constant answer will always be n1+n2
+//        let equation = numberFirst + numberSecond
+//        var answer = equation
+//        
+//        
+//        //print values
+//        println("first value: \(numberFirst)")
+//        println("second value: \(numberSecond)")
+//        println("answer: \(answer)")
+//
+//    
+//    }
     
 }
