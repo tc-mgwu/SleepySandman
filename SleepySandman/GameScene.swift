@@ -330,10 +330,11 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-        var sheepValue: Int = Int(arc4random_uniform(UInt32(12))+1)
-        //generate number between 1-10 and print as string
-   
-        let myString = String(sheepValue)
+//        var sheepValue: Int = Int(arc4random_uniform(UInt32(12))+1)
+        //generate number between 1-12 and print as string
+        sheep.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
+
+        let myString = String(sheep.sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
@@ -341,7 +342,7 @@ class GameScene: SKScene {
         sheepLabel.text = myString
 
         sheep.addChild(sheepLabel)
-        println("sheepValue: \(sheepValue)")
+        println("sheepValue: \(sheep.sheepValue)")
         
    
     }
