@@ -12,9 +12,6 @@ import Foundation
 class GameScene: SKScene {
 
     let hudHeight: CGFloat = 60
-    let scoreLabel = SKLabelNode(fontNamed: "Edit Undo Line BRK")
-    let healthBarString: NSString = "===================="
-    let playerHealthLabel = SKLabelNode(fontNamed: "Arial")
     var score = 0
     let hudLayerNode = SKNode()
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
@@ -60,18 +57,7 @@ class GameScene: SKScene {
         hudBarBackground.position = CGPoint(x:0, y: size.height - hudHeight)
         hudBarBackground.anchorPoint = CGPointZero
         hudLayerNode.addChild(hudBarBackground)
-        
-        scoreLabel.fontSize = 35
-        scoreLabel.text = "Score: 0"
-        scoreLabel.name = "scoreLabel"
-        
-        scoreLabel.verticalAlignmentMode = .Center
-        scoreLabel.position = CGPoint(
-            x: size.width / 2,
-            y: size.height - scoreLabel.frame.size.height + 3)
-            
-            hudLayerNode.addChild(scoreLabel)
-
+       
     
     }
     
@@ -155,7 +141,7 @@ class GameScene: SKScene {
             SKAction.sequence([SKAction.runBlock(spawnSheep),
             SKAction.waitForDuration(2.0)])))
         
-//        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
+//        player.runAction(SKAction.repeatActionForever(playerAnimation))
 //        debugDrawPlayableArea()
     }
     
@@ -196,7 +182,7 @@ class GameScene: SKScene {
         
         boundsCheckSandman()
         moveTrain()
-//        checkCollisions()
+        checkCollisions()
         
         
         if lives <= 0 && !gameOver {
@@ -444,12 +430,13 @@ class GameScene: SKScene {
     }
     
     func checkCollisions() {
-        var hitSheep: [SKSpriteNode] = []
+        var hitSheep: [Sheep] = []
         enumerateChildNodesWithName("sheep") { node, _ in
-//        let sheep = node as SKSpriteNode
+            
         let sheep = node as Sheep
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
+            
         if sheep.sheepValue == self.equation {
 //            println("sheepValue: \(sheep.sheepValue)")
 //            println("equation: \(self.equation)")
@@ -549,11 +536,13 @@ class GameScene: SKScene {
             }
         }
     }
+
     
-    class Sheep: SKSpriteNode
-    {
-        var sheepValue:Int = 0
-        
-    }
+}
+
+
+class Sheep: SKSpriteNode
+{
+    var sheepValue:Int = 0
     
 }
