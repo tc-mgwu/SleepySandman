@@ -329,7 +329,8 @@ class GameScene: SKScene {
 //        var sheepValue: Int = 0
         //spawn sheep at random location
 //        let sheep = SKSpriteNode(imageNamed: "sheep")
-        let sheep = Sheep()
+        
+        let sheep = Sheep(imageNamed: "sheep")
         sheep.name = "sheep"
         sheep.position = CGPoint(
             x: CGFloat.random(min: CGRectGetMinX(playableRect),
@@ -450,8 +451,8 @@ class GameScene: SKScene {
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
         if sheep.sheepValue == self.equation {
-            println("sheepValue: \(sheep.sheepValue)")
-            println("equation: \(self.equation)")
+//            println("sheepValue: \(sheep.sheepValue)")
+//            println("equation: \(self.equation)")
             hitSheep.append(sheep)
             
             }
