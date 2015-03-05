@@ -32,14 +32,15 @@ class GameScene: SKScene {
     
     var numberFirst = 0
     var numberSecond = 0
-    var sheepValue = 0
+//    var sheepValue = 0
     var equation = 0
     var answer = 0
     var lives = 5
     var gameOver = false
     
     
-    
+    let sheep = Sheep(imageNamed: "sheep")
+//    let sheepSprite: SKSpriteNode = SKSpriteNode(imageNamed: "sheep")
     
     
     let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "MERKIN")
@@ -325,9 +326,10 @@ class GameScene: SKScene {
     //SPAWN SHEEP
     func spawnSheep()
     {
-        
+//        var sheepValue: Int = 0
         //spawn sheep at random location
-        let sheep = SKSpriteNode(imageNamed: "sheep")
+//        let sheep = SKSpriteNode(imageNamed: "sheep")
+        let sheep = Sheep()
         sheep.name = "sheep"
         sheep.position = CGPoint(
             x: CGFloat.random(min: CGRectGetMinX(playableRect),
@@ -360,8 +362,9 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
+        var sheepValue: Int = Int(arc4random_uniform(UInt32(12))+1)
         //generate number between 1-10 and print as string
-        self.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
+   
         let myString = String(sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
@@ -370,7 +373,7 @@ class GameScene: SKScene {
         sheepLabel.text = myString
 
         sheep.addChild(sheepLabel)
-//        println("sheepValue: \(self.sheepValue)")
+        println("sheepValue: \(sheepValue)")
         
    
     }
@@ -442,11 +445,12 @@ class GameScene: SKScene {
     func checkCollisions() {
         var hitSheep: [SKSpriteNode] = []
         enumerateChildNodesWithName("sheep") { node, _ in
-        let sheep = node as SKSpriteNode
+//        let sheep = node as SKSpriteNode
+        let sheep = node as Sheep
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
-        if self.sheepValue == self.equation {
-            println("sheepValue: \(self.sheepValue)")
+        if sheep.sheepValue == self.equation {
+            println("sheepValue: \(sheep.sheepValue)")
             println("equation: \(self.equation)")
             hitSheep.append(sheep)
             
@@ -545,47 +549,10 @@ class GameScene: SKScene {
         }
     }
     
-    
-    //random math things
-    func generateNumber1() -> UInt32 {
-        
-        //generate random number from 1-10
-        return arc4random_uniform(10) + 1
-  
-    }
-
-    
-    func generateNumber2() -> UInt32 {
-        
-        //generate random number from 1-10
-        return arc4random_uniform(10) + 1
+    class Sheep: SKSpriteNode
+    {
+        var sheepValue:Int = 0
         
     }
-    
-    func generateNumber3() -> UInt32 {
-        
-        //generate random number from 1-10
-        return arc4random_uniform(20) + 1
-        
-    }
-    
-//    func spawnMath() {
-//        //variables are set to change
-//       let numberFirst = generateNumber1()
-//        let numberSecond = generateNumber2()
-//        
-//     
-//        //constant answer will always be n1+n2
-//        let equation = numberFirst + numberSecond
-//        var answer = equation
-//        
-//        
-//        //print values
-//        println("first value: \(numberFirst)")
-//        println("second value: \(numberSecond)")
-//        println("answer: \(answer)")
-//
-//    
-//    }
     
 }
