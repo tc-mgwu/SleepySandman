@@ -36,7 +36,7 @@ class GameScene: SKScene {
     var gameOver = false
     
     
-    let sheep = Sheep(imageNamed: "sheep")
+    let sheep = SheepNode(imageNamed: "sheep")
 //    let sheepSprite: SKSpriteNode = SKSpriteNode(imageNamed: "sheep")
     
     
@@ -69,13 +69,6 @@ class GameScene: SKScene {
             width: size.width,
             height: playableHeight) // 4
         
-        
-        //swift let variables must be assigned when created, but they changed this with the new swift
-        //before, you couldn't do: let x if (a) x= a else x = b
-//        let equation = numberFirst + numberSecond
-//        let answer = equation
-//        
-        
         //animate character
         //create array to store all textures
         var textures:[SKTexture] = []
@@ -100,16 +93,6 @@ class GameScene: SKScene {
         fatalError("init(coder:) has not been implemented") // 6
     }
     
-    func debugDrawPlayableArea() {
-        let shape = SKShapeNode()
-        let path = CGPathCreateMutable()
-        CGPathAddRect(path, nil, playableRect)
-        shape.path = path
-        shape.strokeColor = SKColor.redColor()
-        shape.lineWidth = 4.0
-        addChild(shape)
-    }
-    
     override func didMoveToView(view: SKView)
     {
         playBackgroundMusic("BackgroundMusic.mp3")
@@ -123,7 +106,7 @@ class GameScene: SKScene {
         addChild(background)
         
         let mySize = background.size
-//        println("Size: \(mySize)")
+
         
         sandman.zPosition = 100
         sandman.position = CGPoint(x: 400, y: 400)
@@ -140,9 +123,7 @@ class GameScene: SKScene {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
             SKAction.waitForDuration(2.0)])))
-        
-//        player.runAction(SKAction.repeatActionForever(playerAnimation))
-//        debugDrawPlayableArea()
+
     }
     
     override func update(currentTime: NSTimeInterval) {
@@ -316,7 +297,7 @@ class GameScene: SKScene {
         //spawn sheep at random location
 //        let sheep = SKSpriteNode(imageNamed: "sheep")
         
-        let sheep = Sheep(imageNamed: "sheep")
+        let sheep = SheepNode(imageNamed: "sheep")
         sheep.name = "sheep"
         sheep.position = CGPoint(
             x: CGFloat.random(min: CGRectGetMinX(playableRect),
@@ -430,10 +411,10 @@ class GameScene: SKScene {
     }
     
     func checkCollisions() {
-        var hitSheep: [Sheep] = []
+        var hitSheep: [SheepNode] = []
         enumerateChildNodesWithName("sheep") { node, _ in
             
-        let sheep = node as Sheep
+        let sheep = node as SheepNode
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
             
@@ -541,7 +522,7 @@ class GameScene: SKScene {
 }
 
 
-class Sheep: SKSpriteNode
+class SheepNode: SKSpriteNode
 {
     var sheepValue:Int = 0
     
