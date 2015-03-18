@@ -12,12 +12,8 @@ import Foundation
 class GameScene: SKScene {
 
     let hudHeight: CGFloat = 60
-    let scoreLabel = SKLabelNode(fontNamed: "Edit Undo Line BRK")
-    let healthBarString: NSString = "===================="
-    let playerHealthLabel = SKLabelNode(fontNamed: "Arial")
-     var score = 0
+    var score = 0
     let hudLayerNode = SKNode()
-       let label:SKLabelNode = SKLabelNode(fontNamed: "Verdana")
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
@@ -31,9 +27,23 @@ class GameScene: SKScene {
     var invincible = false
     let sandmanAnimation: SKAction
     
+    var numberFirst = 0
+    var numberSecond = 0
+
+    var equation = 0
+    var answer = 0
     var lives = 5
     var gameOver = false
     
+    
+    let backgroundLayer = SKNode()
+    let backgroundMovePointsPerSec: CGFloat = 150.0
+    
+    let sheep = SheepNode(imageNamed: "sheep")
+    
+    
+    let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "MERKIN")
+
     
     let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "Bloop.wav", waitForCompletion: false)
@@ -49,18 +59,7 @@ class GameScene: SKScene {
         hudBarBackground.position = CGPoint(x:0, y: size.height - hudHeight)
         hudBarBackground.anchorPoint = CGPointZero
         hudLayerNode.addChild(hudBarBackground)
-        
-        scoreLabel.fontSize = 35
-        scoreLabel.text = "Score: 0"
-        scoreLabel.name = "scoreLabel"
-        
-        scoreLabel.verticalAlignmentMode = .Center
-        scoreLabel.position = CGPoint(
-            x: size.width / 2,
-            y: size.height - scoreLabel.frame.size.height + 3)
-            
-            hudLayerNode.addChild(scoreLabel)
-
+       
     
     }
     
@@ -86,43 +85,37 @@ class GameScene: SKScene {
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         
         super.init(size: size) // 5
+
         
         
-        setUpUI()
     }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented") // 6
     }
     
-    func debugDrawPlayableArea() {
-        let shape = SKShapeNode()
-        let path = CGPathCreateMutable()
-        CGPathAddRect(path, nil, playableRect)
-        shape.path = path
-        shape.strokeColor = SKColor.redColor()
-        shape.lineWidth = 4.0
-        addChild(shape)
-    }
-    
     override func didMoveToView(view: SKView)
     {
         playBackgroundMusic("BackgroundMusic.mp3")
+        backgroundLayer.zPosition = -1
+        addChild(backgroundLayer)
         backgroundColor = SKColor.whiteColor()
         
-        let background = SKSpriteNode(imageNamed: "background1")
-        background.position = CGPoint(x: size.width/2, y: size.height/2)
-        background.anchorPoint = CGPoint(x: 0.5, y: 0.5) // default
-        //background.zRotation = CGFloat(M_PI) / 8
-        background.zPosition = -1
-        addChild(background)
-        
-        let mySize = background.size
-//        println("Size: \(mySize)")
-        
-       sandman.zPosition = 100
+        for i in 0...1 {
+            let background = backgroundNode()
+            background.anchorPoint = CGPointZero
+            background.position =
+                CGPoint(x: CGFloat(i)*background.size.width, y: 0)
+            background.name = "background"
+            backgroundLayer.addChild(background)
+        }
+
+        sandman.zPosition = 100
         sandman.position = CGPoint(x: 400, y: 400)
-        addChild(sandman)
+        backgroundLayer.addChild(sandman)
+       
+        spawnEquation()
+        
         
         //spawn enemies forever
         runAction(SKAction.repeatActionForever(
@@ -132,12 +125,32 @@ class GameScene: SKScene {
         //spawn sheep forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
-            SKAction.waitForDuration(1.0)])))
-        
-//        zombie.runAction(SKAction.repeatActionForever(zombieAnimation))
-//        debugDrawPlayableArea()
+            SKAction.waitForDuration(2.0)])))
+
     }
     
+    func backgroundNode() -> SKSpriteNode {
+        let backgroundNode = SKSpriteNode()
+        backgroundNode.anchorPoint = CGPointZero
+        backgroundNode.name = "background"
+        // 2
+        let background1 = SKSpriteNode(imageNamed: "background1")
+        background1.anchorPoint = CGPointZero
+        background1.position = CGPoint(x: 0, y: 0)
+        backgroundNode.addChild(background1)
+        // 3
+        let background2 = SKSpriteNode(imageNamed: "background2")
+        background2.anchorPoint = CGPointZero
+        background2.position =
+            CGPoint(x: background1.size.width, y: 0)
+        backgroundNode.addChild(background2)
+        // 4
+        backgroundNode.size = CGSize(
+            width: background1.size.width + background2.size.width,
+            height: background1.size.height)
+        return backgroundNode
+        
+    }
     override func update(currentTime: NSTimeInterval) {
         
         if lastUpdateTime > 0 {
@@ -146,37 +159,23 @@ class GameScene: SKScene {
             dt = 0
         }
         lastUpdateTime = currentTime
-//        println("\(dt*1000) milliseconds since last update")
-        
-        if let lastTouch = lastTouchLocation
-        {
+
+        if let lastTouch = lastTouchLocation {
             let diff = lastTouch - sandman.position
-            if (diff.length() <= sandmanMovePointsPerSec * CGFloat(dt))
-            {
-//                 sandman.xScale = 1
-                sandman.position = lastTouchLocation!
-                velocity = CGPointZero
-                stopSandmanAnimation()
-            }
-            else
-            {
-                moveSprite(sandman, velocity: velocity)
-//                sandman.xScale = -1
-//
-//                rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: sandmanRotateRadiansPerSec)
-            }
-            
-//            if lastTouchLocation.x<= UIView.width/2
-//            {
-//                sandman.xScale = -1
-//            
-//            }
-            
+            /*if (diff.length() <= sandmanMovePointsPerSec * CGFloat(dt)) {
+            sandman = lastTouchLocation!
+            velocity = CGPointZero
+            stopsandmanAnimation()
+            } else {*/
+            moveSprite(sandman, velocity: velocity)
+//            rotateSprite(sandman, direction: velocity, rotateRadiansPerSec: zombieRotateRadiansPerSec)
+            //}
         }
         
         boundsCheckSandman()
         moveTrain()
-//        checkCollisions()
+        moveBackground()
+        checkCollisions()
         
         
         if lives <= 0 && !gameOver {
@@ -196,16 +195,11 @@ class GameScene: SKScene {
             view?.presentScene(gameOverScene, transition: reveal)
             
         }
-        
-        
     }
-    override func didEvaluateActions() {
-        checkCollisions()
-    }
+
     
     func moveSprite(sprite: SKSpriteNode, velocity: CGPoint) {
         let amountToMove = velocity * CGFloat(dt)
-//        println("Amount to move: \(amountToMove)")
         sprite.position += amountToMove
     }
     
@@ -225,22 +219,24 @@ class GameScene: SKScene {
     override func touchesBegan(touches: NSSet,
         withEvent event: UIEvent) {
             let touch = touches.anyObject() as UITouch
-            let touchLocation = touch.locationInNode(self)
+            let touchLocation = touch.locationInNode(backgroundLayer)
             sceneTouched(touchLocation)
     }
     
     override func touchesMoved(touches: NSSet,
         withEvent event: UIEvent) {
             let touch = touches.anyObject() as UITouch
-            let touchLocation = touch.locationInNode(self)
+            let touchLocation = touch.locationInNode(backgroundLayer)
             sceneTouched(touchLocation)
     }
     
     func boundsCheckSandman() {
-        let bottomLeft = CGPoint(x: 0,
-            y: CGRectGetMinY(playableRect))
-        let topRight = CGPoint(x: size.width,
-            y: CGRectGetMaxY(playableRect))
+        let bottomLeft = backgroundLayer.convertPoint(
+            CGPoint(x: 0, y: CGRectGetMinY(playableRect)),
+            fromNode: self)
+        let topRight = backgroundLayer.convertPoint(
+            CGPoint(x: size.width, y: CGRectGetMaxY(playableRect)),
+            fromNode: self)
         
         
         if sandman.position.x <= bottomLeft.x {
@@ -272,19 +268,17 @@ class GameScene: SKScene {
     //SPAWN ENEMY
     func spawnEnemy()
     {
-        label.text = "I'm the player"
-        
         let enemy = SKSpriteNode(imageNamed: "enemy")
         enemy.name = "enemy"
-        enemy.position = CGPoint(
+        let enemyScenePos = CGPoint(
             x: size.width + enemy.size.width/2,
             y: CGFloat.random(
                 min: CGRectGetMinY(playableRect) + enemy.size.height/2,
                 max: CGRectGetMaxY(playableRect) - enemy.size.height/2))
-        addChild(enemy)
+        enemy.position = backgroundLayer.convertPoint(enemyScenePos, fromNode: self)
+        backgroundLayer.addChild(enemy)
         
-        let actionMove =
-        SKAction.moveToX(-enemy.size.width/2, duration: 3.5)
+        let actionMove = SKAction.moveByX(-size.width-enemy.size.width, y: 0, duration: 2.0)
         //removes enemy
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
@@ -308,17 +302,20 @@ class GameScene: SKScene {
     //SPAWN SHEEP
     func spawnSheep()
     {
+//        var sheepValue: Int = 0
         //spawn sheep at random location
-        let sheep = SKSpriteNode(imageNamed: "sheep")
-        sheep.name = "sheep"
-        sheep.position = CGPoint(
-            x: CGFloat.random(min: CGRectGetMinX(playableRect),
-                max: CGRectGetMaxX(playableRect)),
-            y: CGFloat.random(min: CGRectGetMinY(playableRect),
-                max: CGRectGetMaxY(playableRect)))
+//        let sheep = SKSpriteNode(imageNamed: "sheep")
         
+        let sheep = SheepNode(imageNamed: "sheep")
+        sheep.name = "sheep"
+        let sheepScenePos = CGPoint(
+            x: CGFloat.random(min: CGRectGetMinX(playableRect)-50,
+                            max: CGRectGetMaxX(playableRect)-50),
+            y: CGFloat.random(min: CGRectGetMinY(playableRect)-50,
+                            max: CGRectGetMaxY(playableRect)-50))
+        sheep.position = backgroundLayer.convertPoint(sheepScenePos, fromNode: self)
         sheep.setScale(0)
-        addChild(sheep)
+        backgroundLayer.addChild(sheep)
         
         //scale Sheep up
         let appear = SKAction.scaleTo(1.0, duration: 0.5)
@@ -342,30 +339,61 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-        
-        let sheepLabel = SKLabelNode(fontNamed: "Arial")
+//        var sheepValue: Int = Int(arc4random_uniform(UInt32(12))+1)
+        //generate number between 1-12 and print as string
+        sheep.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
+
+        let myString = String(sheep.sheepValue)
+        let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
-        sheepLabel.text = "some text"
-        sheepLabel.position = sheep.position
-        addChild(sheepLabel)
+        sheepLabel.text = myString
+
+        sheep.addChild(sheepLabel)
+        println("sheepValue: \(sheep.sheepValue)")
         
    
     }
     
+    func spawnEquation() {
+    //change global vars of n1 and n2 by casting uint32 as ints to pick random from 1-5
+    self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
+    self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
+    self.equation = numberFirst + numberSecond
+    //Debug things- print numbers in console
+    println("numberFirst: \(self.numberFirst)")
+    println("numberSecond: \(self.numberSecond)")
+
+    self.answer = self.equation
+    println("equation: \(self.equation)")
+        
+    //convert int to string using formatter
+    let equationString = String(format: "%d + %d", numberFirst, numberSecond)
+     
+    //player equation label
+    let sandmanEquation = self.equation
+    playerLabel.text = equationString
+    playerLabel.fontColor = SKColor.darkGrayColor()
+    playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
+    playerLabel.fontSize = 32;
+    sandman.addChild(playerLabel)
+    
+    }
     
     func sandmanHitSheep(sheep: SKSpriteNode) {
-        spawnMath()
+      
         runAction(sheepCollisionSound)
         sheep.name = "train"
         sheep.removeAllActions()
-        sheep.setScale(1.0)
+        sheep.setScale(1)
         sheep.zRotation = 0
-        let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
-            sheep.runAction(turnColor)
+//        let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
+//            sheep.runAction(turnColor)
         
-        
+        sheep.removeAllChildren()
+        sandman.removeAllChildren()
+        spawnEquation()
     
     }
     
@@ -393,13 +421,22 @@ class GameScene: SKScene {
     }
     
     func checkCollisions() {
-        var hitSheep: [SKSpriteNode] = []
-        enumerateChildNodesWithName("sheep") { node, _ in
-        let sheep = node as SKSpriteNode
+        var hitSheep: [SheepNode] = []
+        backgroundLayer.enumerateChildNodesWithName("sheep") { node, _ in
+            
+        let sheep = node as SheepNode
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
-        hitSheep.append(sheep)
+            
+        if sheep.sheepValue == self.equation {
+//            println("sheepValue: \(sheep.sheepValue)")
+//            println("equation: \(self.equation)")
+            hitSheep.append(sheep)
+            
+            }
+        
         }
+     
         }
         for sheep in hitSheep {
         sandmanHitSheep(sheep)
@@ -410,7 +447,7 @@ class GameScene: SKScene {
         }
                 
         var hitEnemies: [SKSpriteNode] = []
-        enumerateChildNodesWithName("enemy") { node, _ in
+        backgroundLayer.enumerateChildNodesWithName("enemy") { node, _ in
         let enemy = node as SKSpriteNode
         if CGRectIntersectsRect(
         CGRectInset(node.frame, 20, 20), self.sandman.frame) {
@@ -422,11 +459,15 @@ class GameScene: SKScene {
         }
     }
     
+    override func didEvaluateActions() {
+        checkCollisions()
+    }
+    
     func moveTrain() {
         var targetPosition = sandman.position
         var trainCount = 0
             
-        enumerateChildNodesWithName("train") {
+        backgroundLayer.enumerateChildNodesWithName("train") {
             node, _ in
             trainCount++
         
@@ -463,7 +504,7 @@ class GameScene: SKScene {
     func loseSheep() {
         // variable to track number of sheep removed from line
         var loseCount = 0
-        enumerateChildNodesWithName("train") { node, stop in
+        backgroundLayer.enumerateChildNodesWithName("train") { node, stop in
            
             // find random offset from sheep's current pos
             var randomSpot = node.position
@@ -490,41 +531,33 @@ class GameScene: SKScene {
             }
         }
     }
-    
-    
-    //random math things
-    func generateNumber1() -> UInt32 {
-        
-        //generate random number from 1-100
-        return arc4random_uniform(100) + 1
-  
-    }
+
 
     
-    func generateNumber2() -> UInt32 {
+    func moveBackground() {
+        let backgroundVelocity =
+        CGPoint(x: -backgroundMovePointsPerSec, y: 0)
+        let amountToMove = backgroundVelocity * CGFloat(dt)
+        backgroundLayer.position += amountToMove
         
-        //generate random number from 1-100
-        return arc4random_uniform(100) + 1
         
-    }
+        backgroundLayer.enumerateChildNodesWithName("background") { node, _ in
+            let background = node as SKSpriteNode
+            let backgroundScreenPos = self.backgroundLayer.convertPoint(
+                background.position, toNode: self)
+            if backgroundScreenPos.x <= -background.size.width {
+                background.position = CGPoint (
+                    x: background.position.x + background.size.width*2,
+                    y: background.position.y)
+                }
+            }
+        }
     
-    func spawnMath() {
-        //variables are set to change
-        var numberFirst = generateNumber1()
-        var numberSecond = generateNumber2()
-        
-     
-        //constant answer will always be n1+n2
-        let equation = numberFirst + numberSecond
-        var answer = equation
-        
-        
-        //print values
-        println("first value: \(numberFirst)")
-        println("second value: \(numberSecond)")
-        println("answer: \(answer)")
+}
 
-    
-    }
+
+class SheepNode: SKSpriteNode
+{
+    var sheepValue:Int = 0
     
 }

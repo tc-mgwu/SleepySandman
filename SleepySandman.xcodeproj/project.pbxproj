@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A533DEDC1A9400A80048E840 /* MERKIN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A533DEDB1A9400A80048E840 /* MERKIN.ttf */; };
 		A5377D421A805DE300D8FDF8 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5377D411A805DE300D8FDF8 /* GameOverScene.swift */; };
 		A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */; };
 		A53C20FF1A7B1968002DDDA9 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FE1A7B1968002DDDA9 /* GameScene.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A533DEDB1A9400A80048E840 /* MERKIN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MERKIN.ttf; sourceTree = "<group>"; };
 		A5377D411A805DE300D8FDF8 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = ../GameOverScene.swift; sourceTree = "<group>"; };
 		A53C20F51A7B1968002DDDA9 /* SleepySandman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepySandman.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A53C20F91A7B1968002DDDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -88,9 +90,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A533DEDA1A9400920048E840 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				A533DEDB1A9400A80048E840 /* MERKIN.ttf */,
+			);
+			name = Fonts;
+			sourceTree = "<group>";
+		};
 		A53C20EC1A7B1968002DDDA9 = {
 			isa = PBXGroup;
 			children = (
+				A533DEDA1A9400920048E840 /* Fonts */,
 				A53C20F71A7B1968002DDDA9 /* SleepySandman */,
 				A53C21111A7B1968002DDDA9 /* SleepySandmanTests */,
 				A53C20F61A7B1968002DDDA9 /* Products */,
@@ -268,6 +279,7 @@
 				A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */,
 				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
 				A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */,
+				A533DEDC1A9400A80048E840 /* MERKIN.ttf in Resources */,
 				A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */,
 				A53C21261A7B1CF1002DDDA9 /* background2.png in Resources */,
 				A5ECD0441A7C5D390069D53B /* Math.plist in Resources */,
