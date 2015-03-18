@@ -10,6 +10,8 @@
 	<string>SleepySandman</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>C8B2407FDC12EFB09D7623A6A12360927CD15AE7</key>
+		<string>https://github.com/henryeverett/SpriteBar.git</string>
 		<key>E89F6A17978CBA05501227670F2A66394A804894</key>
 		<string>https://github.com/yxtonic/SleepySandman</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>SleepySandman.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>C8B2407FDC12EFB09D7623A6A12360927CD15AE7</key>
+		<string>../../../SpriteBar</string>
 		<key>E89F6A17978CBA05501227670F2A66394A804894</key>
 		<string>../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>E89F6A17978CBA05501227670F2A66394A804894</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SleepySandman</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C8B2407FDC12EFB09D7623A6A12360927CD15AE7</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SpriteBar</string>
 		</dict>
 	</array>
 </dict>
