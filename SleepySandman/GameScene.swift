@@ -11,10 +11,9 @@ import Foundation
 
 class GameScene: SKScene {
 
-    let hudHeight: CGFloat = 60
-    var score = 0
-    let hudLayerNode = SKNode()
+    let screenSize: CGRect = UIScreen.mainScreen().bounds
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
+    
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
     let sandmanMovePointsPerSec: CGFloat = 480.0
@@ -29,39 +28,24 @@ class GameScene: SKScene {
     
     var numberFirst = 0
     var numberSecond = 0
-
+    var pickEquationType = 0
     var equation = 0
     var answer = 0
     var lives = 5
     var gameOver = false
     
-    
+    let hudLayer = SKNode()
     let backgroundLayer = SKNode()
     let backgroundMovePointsPerSec: CGFloat = 150.0
     
     let sheep = SheepNode(imageNamed: "sheep")
-    
-    
     let playerLabel:SKLabelNode = SKLabelNode(fontNamed: "MERKIN")
-
-    
     let sheepCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "Bloop.wav", waitForCompletion: false)
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "hitCatLady.wav", waitForCompletion: false)
 
 
-    func setUpUI() {
-        let backgroundSize = CGSize(width: size.width, height: hudHeight)
-        let backgroundColor = SKColor.blackColor()
-        let hudBarBackground = SKSpriteNode(color: backgroundColor, size: backgroundSize)
-        
-        hudBarBackground.position = CGPoint(x:0, y: size.height - hudHeight)
-        hudBarBackground.anchorPoint = CGPointZero
-        hudLayerNode.addChild(hudBarBackground)
-       
-    
-    }
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
@@ -69,7 +53,9 @@ class GameScene: SKScene {
         let playableMargin = (size.height-playableHeight)/2.0 // 3
         playableRect = CGRect(x: 0, y: playableMargin,
             width: size.width,
-            height: playableHeight) // 4
+            height: playableHeight - 50) // 4
+        
+ 
         
         //animate character
         //create array to store all textures
@@ -86,7 +72,7 @@ class GameScene: SKScene {
         
         super.init(size: size) // 5
 
-        
+    
         
     }
     
@@ -96,10 +82,21 @@ class GameScene: SKScene {
     
     override func didMoveToView(view: SKView)
     {
+
+        let screenWidth = screenSize.width
+        let screenHeight = screenSize.height
+        let maxY = CGRectGetMaxY(screenSize)
         playBackgroundMusic("BackgroundMusic.mp3")
         backgroundLayer.zPosition = -1
+        hudLayer.zPosition = 100
+     
         addChild(backgroundLayer)
+        addChild(hudLayer)
         backgroundColor = SKColor.whiteColor()
+  
+        
+       
+        
         
         for i in 0...1 {
             let background = backgroundNode()
@@ -110,6 +107,7 @@ class GameScene: SKScene {
             backgroundLayer.addChild(background)
         }
 
+       
         sandman.zPosition = 100
         sandman.position = CGPoint(x: 400, y: 400)
         backgroundLayer.addChild(sandman)
@@ -302,11 +300,7 @@ class GameScene: SKScene {
     //SPAWN SHEEP
     func spawnSheep()
     {
-//        var sheepValue: Int = 0
-        //spawn sheep at random location
-//        let sheep = SKSpriteNode(imageNamed: "sheep")
-        
-        let sheep = SheepNode(imageNamed: "sheep")
+     let sheep = SheepNode(imageNamed: "sheep")
         sheep.name = "sheep"
         let sheepScenePos = CGPoint(
             x: CGFloat.random(min: CGRectGetMinX(playableRect)-50,
@@ -339,9 +333,12 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-//        var sheepValue: Int = Int(arc4random_uniform(UInt32(12))+1)
-        //generate number between 1-12 and print as string
-        sheep.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
+        if self.answer <= 6 {
+            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+1) //1-6
+        }
+        else {
+            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+5) //5-6-7-8-9-10-11
+        }
 
         let myString = String(sheep.sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
@@ -360,20 +357,52 @@ class GameScene: SKScene {
     //change global vars of n1 and n2 by casting uint32 as ints to pick random from 1-5
     self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
     self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
-    self.equation = numberFirst + numberSecond
-    //Debug things- print numbers in console
-    println("numberFirst: \(self.numberFirst)")
-    println("numberSecond: \(self.numberSecond)")
-
-    self.answer = self.equation
-    println("equation: \(self.equation)")
+    self.pickEquationType = Int(arc4random_uniform(4))+1 //pick 3-1
         
-    //convert int to string using formatter
-    let equationString = String(format: "%d + %d", numberFirst, numberSecond)
+        if pickEquationType <= 2 {
+            
+            self.equation = numberFirst + numberSecond
+            //Debug things- print numbers in console
+            println("numberFirst: \(self.numberFirst)")
+            println("numberSecond: \(self.numberSecond)")
+            
+            self.answer = self.equation
+            println("equation: \(self.equation)")
+            
+            //convert int to string using formatter
+            let equationString = String(format: "%d + %d", numberFirst, numberSecond)
+            
+            //player equation label
+            let sandmanEquation = self.equation
+            playerLabel.text = equationString
+            
+        } else {
      
-    //player equation label
-    let sandmanEquation = self.equation
-    playerLabel.text = equationString
+            if numberFirst > numberSecond || numberFirst == numberSecond {
+                self.equation = numberFirst - numberSecond
+                let equationString = String(format: "%d - %d", numberFirst, numberSecond)
+                   playerLabel.text = equationString
+           
+            }
+            else
+            {
+            
+                self.equation = numberSecond - numberFirst
+                let equationString = String(format: "%d - %d", numberSecond, numberFirst)
+                   playerLabel.text = equationString
+            }
+            
+            
+            self.answer = self.equation
+      
+            //convert int to string using formatter
+            
+            //player equation label
+            let sandmanEquation = self.equation
+         
+
+      }
+
     playerLabel.fontColor = SKColor.darkGrayColor()
     playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
     playerLabel.fontSize = 32;
@@ -388,8 +417,6 @@ class GameScene: SKScene {
         sheep.removeAllActions()
         sheep.setScale(1)
         sheep.zRotation = 0
-//        let turnColor = SKAction.colorizeWithColor(SKColor.blueColor(), colorBlendFactor: 1.0, duration: 0.2)
-//            sheep.runAction(turnColor)
         
         sheep.removeAllChildren()
         sandman.removeAllChildren()
