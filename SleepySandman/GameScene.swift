@@ -31,7 +31,7 @@ class GameScene: SKScene {
     var pickEquationType = 0
     var equation = 0
     var answer = 0
-    var lives = 5
+    
     var gameOver = false
     
     let hudLayer = SKNode()
@@ -45,7 +45,11 @@ class GameScene: SKScene {
     let enemyCollisionSound: SKAction = SKAction.playSoundFileNamed(
         "hitCatLady.wav", waitForCompletion: false)
 
-
+    //HUD
+    var scoreNode = SKLabelNode()
+    var score = 0
+    var lives = 5
+    
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
@@ -76,6 +80,19 @@ class GameScene: SKScene {
         
     }
     
+    func createHUD(){
+        var hud = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height*0.05))
+        hud.anchorPoint=CGPointMake(0, 0)
+        hud.position = CGPointMake(0, self.size.height-hud.size.height)
+        self.addChild(hud)
+    
+        self.score = 0
+        self.scoreNode.position = CGPointMake(hud.size.width-hud.size.width * 0.1, 1)
+        self.scoreNode.text = "0"
+        self.scoreNode.fontSize = hud.size.height
+        hud.addChild(self.scoreNode)
+    }
+    
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented") // 6
     }
@@ -88,14 +105,12 @@ class GameScene: SKScene {
         let maxY = CGRectGetMaxY(screenSize)
         playBackgroundMusic("BackgroundMusic.mp3")
         backgroundLayer.zPosition = -1
-        hudLayer.zPosition = 100
-     
-        addChild(backgroundLayer)
-        addChild(hudLayer)
-        backgroundColor = SKColor.whiteColor()
-  
         
+        addChild(backgroundLayer)
        
+       
+        hudLayer.zPosition = 100
+        addChild(hudLayer)
         
         
         for i in 0...1 {
@@ -124,9 +139,11 @@ class GameScene: SKScene {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
             SKAction.waitForDuration(2.0)])))
+        
+        createHUD()
 
     }
-    
+
     func backgroundNode() -> SKSpriteNode {
         let backgroundNode = SKSpriteNode()
         backgroundNode.anchorPoint = CGPointZero
@@ -303,9 +320,9 @@ class GameScene: SKScene {
      let sheep = SheepNode(imageNamed: "sheep")
         sheep.name = "sheep"
         let sheepScenePos = CGPoint(
-            x: CGFloat.random(min: CGRectGetMinX(playableRect)-50,
+            x: CGFloat.random(min: CGRectGetMidX(playableRect)-100,
                             max: CGRectGetMaxX(playableRect)-50),
-            y: CGFloat.random(min: CGRectGetMinY(playableRect)-50,
+            y: CGFloat.random(min: CGRectGetMinY(playableRect),
                             max: CGRectGetMaxY(playableRect)-50))
         sheep.position = backgroundLayer.convertPoint(sheepScenePos, fromNode: self)
         sheep.setScale(0)
@@ -359,7 +376,7 @@ class GameScene: SKScene {
     self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
     self.pickEquationType = Int(arc4random_uniform(4))+1 //pick 3-1
         
-        if pickEquationType <= 2 {
+        if pickEquationType <= 2 || numberFirst == numberSecond {
             
             self.equation = numberFirst + numberSecond
             //Debug things- print numbers in console
@@ -378,7 +395,7 @@ class GameScene: SKScene {
             
         } else {
      
-            if numberFirst > numberSecond || numberFirst == numberSecond {
+            if numberFirst > numberSecond {
                 self.equation = numberFirst - numberSecond
                 let equationString = String(format: "%d - %d", numberFirst, numberSecond)
                    playerLabel.text = equationString
