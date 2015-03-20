@@ -12,7 +12,7 @@
 	<dict>
 		<key>C8B2407FDC12EFB09D7623A6A12360927CD15AE7</key>
 		<string>https://github.com/henryeverett/SpriteBar.git</string>
-		<key>E89F6A17978CBA05501227670F2A66394A804894</key>
+		<key>CBB1CF7CD24FD9E3B2829A5B56517B1DE1BB8FEF</key>
 		<string>https://github.com/yxtonic/SleepySandman</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
@@ -21,7 +21,7 @@
 	<dict>
 		<key>C8B2407FDC12EFB09D7623A6A12360927CD15AE7</key>
 		<string>../../../SpriteBar</string>
-		<key>E89F6A17978CBA05501227670F2A66394A804894</key>
+		<key>CBB1CF7CD24FD9E3B2829A5B56517B1DE1BB8FEF</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -29,14 +29,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>E89F6A17978CBA05501227670F2A66394A804894</string>
+	<string>CBB1CF7CD24FD9E3B2829A5B56517B1DE1BB8FEF</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>E89F6A17978CBA05501227670F2A66394A804894</string>
+			<string>CBB1CF7CD24FD9E3B2829A5B56517B1DE1BB8FEF</string>
 			<key>IDESourceControlWCCName</key>
 			<string>SleepySandman</string>
 		</dict>
