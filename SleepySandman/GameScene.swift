@@ -350,81 +350,81 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-        if self.answer <= 6 {
-            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+1) //1-6
-        }
-        else {
-            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+5) //5-6-7-8-9-10-11
-        }
-
+//        if self.answer <= 6 {
+//            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+1) //1-6
+//    
+//        } else {
+//            sheep.sheepValue = Int(arc4random_uniform(UInt32(8))+5) //5-6-7-8-9-10-11-12
+//        
+//        }
+        sheep.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
         let myString = String(sheep.sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
         sheepLabel.text = myString
-
+        sheepLabel.zPosition = 100
         sheep.addChild(sheepLabel)
         println("sheepValue: \(sheep.sheepValue)")
-        
-   
+
+
     }
     
     func spawnEquation() {
-    //change global vars of n1 and n2 by casting uint32 as ints to pick random from 1-5
-    self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
-    self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
-    self.pickEquationType = Int(arc4random_uniform(4))+1 //pick 3-1
+        //change global vars of n1 and n2 by casting uint32 as ints to pick random from 1-5
+        self.numberFirst = Int(arc4random_uniform(UInt32(6))+1)
+        self.numberSecond = Int(arc4random_uniform(UInt32(6))+1)
+        self.pickEquationType = Int(arc4random_uniform(4))+1 //pick 3-1
         
         if pickEquationType <= 2 || numberFirst == numberSecond {
             
             self.equation = numberFirst + numberSecond
-            //Debug things- print numbers in console
-            println("numberFirst: \(self.numberFirst)")
-            println("numberSecond: \(self.numberSecond)")
-            
-            self.answer = self.equation
-            println("equation: \(self.equation)")
-            
-            //convert int to string using formatter
             let equationString = String(format: "%d + %d", numberFirst, numberSecond)
-            
-            //player equation label
+           
+            self.answer = self.equation
             let sandmanEquation = self.equation
+            
             playerLabel.text = equationString
             
+      
         } else {
-     
+        
             if numberFirst > numberSecond {
                 self.equation = numberFirst - numberSecond
                 let equationString = String(format: "%d - %d", numberFirst, numberSecond)
-                   playerLabel.text = equationString
-           
-            }
-            else
-            {
+                playerLabel.text = equationString
             
+            } else {
                 self.equation = numberSecond - numberFirst
                 let equationString = String(format: "%d - %d", numberSecond, numberFirst)
-                   playerLabel.text = equationString
-            }
-            
-            
-            self.answer = self.equation
-      
-            //convert int to string using formatter
-            
-            //player equation label
-            let sandmanEquation = self.equation
+                playerLabel.text = equationString
          
-
-      }
-
-    playerLabel.fontColor = SKColor.darkGrayColor()
-    playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
-    playerLabel.fontSize = 32;
-    sandman.addChild(playerLabel)
-    
+            }
+   
+            self.answer = self.equation
+            let sandmanEquation = self.equation
+            
+        }
+        
+       
+//        self.equation = numberFirst + numberSecond
+//        
+//        self.answer = self.equation
+//      
+//        
+//        //convert int to string using formatter
+//        let equationString = String(format: "%d + %d", numberFirst, numberSecond)
+//        
+//        //player equation label
+//        let sandmanEquation = self.equation
+//        playerLabel.text = equationString
+        playerLabel.fontColor = SKColor.darkGrayColor()
+        playerLabel.position = CGPoint(x:sandman.size.width-135, y:sandman.size.height-345)
+        playerLabel.fontSize = 32
+        playerLabel.zPosition = 100
+        sandman.addChild(playerLabel)
+        
     }
     
     func sandmanHitSheep(sheep: SKSpriteNode) {
@@ -435,9 +435,12 @@ class GameScene: SKScene {
         sheep.setScale(1)
         sheep.zRotation = 0
         
+        
         sheep.removeAllChildren()
         sandman.removeAllChildren()
         spawnEquation()
+        
+       
     
     }
     
@@ -473,8 +476,7 @@ class GameScene: SKScene {
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
             
         if sheep.sheepValue == self.equation {
-//            println("sheepValue: \(sheep.sheepValue)")
-//            println("equation: \(self.equation)")
+
             hitSheep.append(sheep)
             
             }
