@@ -73,7 +73,7 @@ class GameScene: SKScene {
         
        sandmanAnimation = SKAction.repeatActionForever(
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
-        
+        sandman.zPosition = 150
         super.init(size: size) // 5
 
     
@@ -350,21 +350,21 @@ class GameScene: SKScene {
         let actions = [appear, groupWait, disappear, removeFromParent]
         sheep.runAction(SKAction.sequence(actions))
         
-//        if self.answer <= 6 {
-//            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+1) //1-6
-//    
-//        } else {
-//            sheep.sheepValue = Int(arc4random_uniform(UInt32(8))+5) //5-6-7-8-9-10-11-12
-//        
-//        }
-        sheep.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
+        if self.answer <= 6 {
+            sheep.sheepValue = Int(arc4random_uniform(UInt32(7))+1) //1-6
+    
+        } else {
+            sheep.sheepValue = Int(arc4random_uniform(UInt32(8))+5) //5-6-7-8-9-10-11-12
+        
+        }
+//        sheep.sheepValue = Int(arc4random_uniform(UInt32(12))+1)
         let myString = String(sheep.sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.darkGrayColor()
         sheepLabel.fontSize = 30
         sheepLabel.text = myString
-        sheepLabel.zPosition = 100
+        sheepLabel.zPosition = 50
         sheep.addChild(sheepLabel)
         println("sheepValue: \(sheep.sheepValue)")
 
@@ -475,10 +475,17 @@ class GameScene: SKScene {
        
         if CGRectIntersectsRect(sheep.frame, self.sandman.frame) {
             
-        if sheep.sheepValue == self.equation {
-
-            hitSheep.append(sheep)
+        if sheep.sheepValue == self.equation
+            {
+                hitSheep.append(sheep)
             
+        } else {
+            
+//            let turnGreen = SKAction.colorizeWithColor(SKColor.greenColor(), colorBlendFactor: 1.0, duration: 0.2)
+//            sheep.runAction(turnGreen)
+            sheep.color = SKColor.greenColor()
+            
+          
             }
         
         }
