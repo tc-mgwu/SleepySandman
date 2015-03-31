@@ -28,6 +28,7 @@
 		A5810A751A7C47D200D52532 /* lose.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A701A7C47D200D52532 /* lose.wav */; };
 		A5810A761A7C47D200D52532 /* win.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A711A7C47D200D52532 /* win.wav */; };
 		A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */; };
+		A591678A1ACB513F00210ABF /* SandmanUI.png in Resources */ = {isa = PBXBuildFile; fileRef = A59167891ACB513F00210ABF /* SandmanUI.png */; };
 		A5A5D65C1ABB97DE00FF92F9 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A5D65B1ABB97DE00FF92F9 /* MainMenu.swift */; };
 		A5A5D6641ABB9C0800FF92F9 /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A5D6631ABB9C0800FF92F9 /* MainMenu.png */; };
 		A5A5D6661ABBA88300FF92F9 /* Playbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A5D6651ABBA88300FF92F9 /* Playbutton.png */; };
@@ -71,6 +72,7 @@
 		A5810A701A7C47D200D52532 /* lose.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = lose.wav; sourceTree = "<group>"; };
 		A5810A711A7C47D200D52532 /* win.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win.wav; sourceTree = "<group>"; };
 		A5810A771A7C4BB500D52532 /* BackgroundMusic.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BackgroundMusic.mp3; sourceTree = "<group>"; };
+		A59167891ACB513F00210ABF /* SandmanUI.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SandmanUI.png; path = ../../../Desktop/SandmanUI.png; sourceTree = "<group>"; };
 		A5A5D65B1ABB97DE00FF92F9 /* MainMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
 		A5A5D6631ABB9C0800FF92F9 /* MainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MainMenu.png; path = ../../../Desktop/MainMenu.png; sourceTree = "<group>"; };
 		A5A5D6651ABBA88300FF92F9 /* Playbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Playbutton.png; path = ../../../Desktop/Playbutton.png; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				A5A5D6651ABBA88300FF92F9 /* Playbutton.png */,
+				A59167891ACB513F00210ABF /* SandmanUI.png */,
 				A5C7F1B81ABA2B8300E88D8C /* Healthbar.png */,
 				A5C7F1B91ABA2B8300E88D8C /* HealthbarColor.png */,
 				A540D9B51ABA10CA001EB0D8 /* background1.png */,
@@ -277,6 +280,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A591678A1ACB513F00210ABF /* SandmanUI.png in Resources */,
 				A5810A721A7C47D200D52532 /* BackgroundMusic.wav in Resources */,
 				A5A5D6641ABB9C0800FF92F9 /* MainMenu.png in Resources */,
 				A5C7F1BA1ABA2B8300E88D8C /* Healthbar.png in Resources */,

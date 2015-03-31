@@ -35,6 +35,7 @@ class GameScene: SKScene {
     var gameOver = false
     
     let hudLayer = SKNode()
+//    var hudLayer = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(200, 200))
     let backgroundLayer = SKNode()
     let backgroundMovePointsPerSec: CGFloat = 150.0
     
@@ -50,6 +51,10 @@ class GameScene: SKScene {
     var score = 0
     var lives = 5
     
+    
+    var lblScore: SKLabelNode!
+    var lblLives: SKLabelNode!
+   
     
     override init(size: CGSize) {
         let maxAspectRatio:CGFloat = 16.0/9.0 // 1
@@ -74,24 +79,25 @@ class GameScene: SKScene {
        sandmanAnimation = SKAction.repeatActionForever(
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         sandman.zPosition = 150
+        
         super.init(size: size) // 5
-
-    
+        
+       
         
     }
-    
-    func createHUD(){
-        var hud = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height*0.05))
-        hud.anchorPoint=CGPointMake(0, 0)
-        hud.position = CGPointMake(0, self.size.height-hud.size.height)
-        self.addChild(hud)
-    
-        self.score = 0
-        self.scoreNode.position = CGPointMake(hud.size.width-hud.size.width * 0.1, 1)
-        self.scoreNode.text = "0"
-        self.scoreNode.fontSize = hud.size.height
-        hud.addChild(self.scoreNode)
-    }
+//    
+//    func createHUD(){
+//        var hud = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height*0.05))
+//        hud.anchorPoint=CGPointMake(0, 0)
+//        hud.position = CGPointMake(0, self.size.height-hud.size.height)
+//        self.addChild(hud)
+//    
+//        self.score = 0
+//        self.scoreNode.position = CGPointMake(hud.size.width-hud.size.width * 0.1, 1)
+//        self.scoreNode.text = "0"
+//        self.scoreNode.fontSize = hud.size.height
+//        hud.addChild(self.scoreNode)
+//    }
     
     required init(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented") // 6
@@ -103,14 +109,19 @@ class GameScene: SKScene {
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
         let maxY = CGRectGetMaxY(screenSize)
+       
         playBackgroundMusic("BackgroundMusic.mp3")
         backgroundLayer.zPosition = -1
         
-        addChild(backgroundLayer)
+        self.addChild(backgroundLayer)
+       
+//        hudLayer.position = CGPoint(x: CGRectGetMinX(screenSize), y: CGRectGetMaxY(screenSize))
        
        
+   
         hudLayer.zPosition = 100
-        addChild(hudLayer)
+        self.addChild(hudLayer)
+        
         
         
         for i in 0...1 {
@@ -139,8 +150,23 @@ class GameScene: SKScene {
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
             SKAction.waitForDuration(2.0)])))
+//        
+//        createHUD()
         
-        createHUD()
+        let sandmanLives = SKSpriteNode(imageNamed: "SandmanUI")
+        sandmanLives.anchorPoint = CGPointMake(0 , 1);
+
+        sandmanLives.position = CGPoint(x: 25, y: self.size.height-self.size.height/9)
+        hudLayer.addChild(sandmanLives)
+        
+        lblLives = SKLabelNode(fontNamed: "MERKIN")
+        lblLives.fontSize = 30
+        lblLives.fontColor = SKColor.whiteColor()
+        lblLives.position = CGPoint(x: 0, y: 0)
+        lblLives.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
+        lblLives.text = String(format: "X %d", lives)
+        lblLives.zPosition = 200
+        sandmanLives.addChild(lblLives)
 
     }
 
