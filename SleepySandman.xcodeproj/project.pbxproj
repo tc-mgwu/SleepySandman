@@ -12,6 +12,8 @@
 		A52193181ACCABE500393717 /* MainMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = A52193171ACCABE500393717 /* MainMenu.png */; };
 		A521931B1ACCAC2000393717 /* background1.png in Resources */ = {isa = PBXBuildFile; fileRef = A52193191ACCAC2000393717 /* background1.png */; };
 		A521931E1ACCAC5B00393717 /* background2.png in Resources */ = {isa = PBXBuildFile; fileRef = A521931D1ACCAC5B00393717 /* background2.png */; };
+		A52193201ACCAF8900393717 /* SandmanHurt.png in Resources */ = {isa = PBXBuildFile; fileRef = A521931F1ACCAF8900393717 /* SandmanHurt.png */; };
+		A530CE3D1ACCB83900FDC559 /* Ow.png in Resources */ = {isa = PBXBuildFile; fileRef = A530CE3C1ACCB83900FDC559 /* Ow.png */; };
 		A533DEDC1A9400A80048E840 /* MERKIN.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A533DEDB1A9400A80048E840 /* MERKIN.ttf */; };
 		A5377D421A805DE300D8FDF8 /* GameOverScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5377D411A805DE300D8FDF8 /* GameOverScene.swift */; };
 		A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */; };
@@ -50,6 +52,8 @@
 		A52193171ACCABE500393717 /* MainMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainMenu.png; sourceTree = "<group>"; };
 		A52193191ACCAC2000393717 /* background1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background1.png; sourceTree = "<group>"; };
 		A521931D1ACCAC5B00393717 /* background2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background2.png; sourceTree = "<group>"; };
+		A521931F1ACCAF8900393717 /* SandmanHurt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SandmanHurt.png; sourceTree = "<group>"; };
+		A530CE3C1ACCB83900FDC559 /* Ow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Ow.png; sourceTree = "<group>"; };
 		A533DEDB1A9400A80048E840 /* MERKIN.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MERKIN.ttf; sourceTree = "<group>"; };
 		A5377D411A805DE300D8FDF8 /* GameOverScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GameOverScene.swift; path = ../GameOverScene.swift; sourceTree = "<group>"; };
 		A53C20F51A7B1968002DDDA9 /* SleepySandman.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SleepySandman.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,8 +175,10 @@
 			children = (
 				A52193131ACCABD900393717 /* Playbutton.png */,
 				A52193141ACCABD900393717 /* SandmanUI.png */,
+				A521931F1ACCAF8900393717 /* SandmanHurt.png */,
 				A521931D1ACCAC5B00393717 /* background2.png */,
 				A52193191ACCAC2000393717 /* background1.png */,
+				A530CE3C1ACCB83900FDC559 /* Ow.png */,
 				A52193171ACCABE500393717 /* MainMenu.png */,
 				A53C21221A7B1CF1002DDDA9 /* YouLose.png */,
 				A53C21231A7B1CF1002DDDA9 /* YouWin.png */,
@@ -279,6 +285,7 @@
 				A52193181ACCABE500393717 /* MainMenu.png in Resources */,
 				A5810A731A7C47D200D52532 /* Bloop.wav in Resources */,
 				A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */,
+				A52193201ACCAF8900393717 /* SandmanHurt.png in Resources */,
 				A5810A751A7C47D200D52532 /* lose.wav in Resources */,
 				A52193151ACCABD900393717 /* Playbutton.png in Resources */,
 				A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */,
@@ -288,6 +295,7 @@
 				A5810A761A7C47D200D52532 /* win.wav in Resources */,
 				A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */,
 				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
+				A530CE3D1ACCB83900FDC559 /* Ow.png in Resources */,
 				A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */,
 				A533DEDC1A9400A80048E840 /* MERKIN.ttf in Resources */,
 				A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */,

@@ -25,7 +25,6 @@ class GameScene: SKScene {
     let sandmanRotateRadiansPerSec:CGFloat = 4.0 * π
     var invincible = false
     let sandmanAnimation: SKAction
-    
     var numberFirst = 0
     var numberSecond = 0
     var pickEquationType = 0
@@ -54,6 +53,7 @@ class GameScene: SKScene {
     
     var lblScore: SKLabelNode!
     var lblLives: SKLabelNode!
+    let sandmanLives = SKSpriteNode(imageNamed: "SandmanUI")
    
     
     override init(size: CGSize) {
@@ -80,6 +80,7 @@ class GameScene: SKScene {
             SKAction.animateWithTextures(textures, timePerFrame: 0.1))
         sandman.zPosition = 150
         
+       
         super.init(size: size) // 5
         
        
@@ -153,14 +154,15 @@ class GameScene: SKScene {
 //        
 //        createHUD()
         
-        let sandmanLives = SKSpriteNode(imageNamed: "SandmanUI")
+        
         sandmanLives.anchorPoint = CGPointMake(0 , 1);
 
         sandmanLives.position = CGPoint(x: 25, y: self.size.height-self.size.height/9)
+        
         hudLayer.addChild(sandmanLives)
         
         lblLives = SKLabelNode(fontNamed: "MERKIN")
-        lblLives.fontSize = 30
+        lblLives.fontSize = 35
         lblLives.fontColor = SKColor.whiteColor()
         lblLives.position = CGPoint(x: 0, y: 0)
         lblLives.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
@@ -475,6 +477,8 @@ class GameScene: SKScene {
         runAction(enemyCollisionSound)
         loseSheep()
         lives--
+        lblLives.text = String(format: "X %d", lives)
+        sandmanLives.texture = SKTexture(imageNamed: "SandmanHurt")
         
         invincible = true
        
