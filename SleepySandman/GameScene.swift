@@ -478,7 +478,18 @@ class GameScene: SKScene {
         loseSheep()
         lives--
         lblLives.text = String(format: "X %d", lives)
-        sandmanLives.texture = SKTexture(imageNamed: "SandmanHurt")
+//        sandmanLives.texture = SKTexture(imageNamed: "SandmanHurt")
+        
+        let hurtUIAction = (SKAction.runBlock({
+            self.sandmanLives.texture = SKTexture(imageNamed: "SandmanHurt")
+        }))
+        
+        let normalUIAction = (SKAction.runBlock({
+            self.sandmanLives.texture = SKTexture(imageNamed: "SandmanUI")
+        }))
+
+        let completeHitUIAction = (SKAction.sequence([hurtUIAction, normalUIAction]))
+        sandmanLives.runAction(completeHitUIAction)
         
         invincible = true
        
@@ -494,6 +505,7 @@ class GameScene: SKScene {
             self.invincible = false
         }
         sandman.runAction(SKAction.sequence([blinkAction, setHidden]))
+//        sandmanLives.texture = SKTexture(imageNamed: "SandmanUI")
    
     }
     
