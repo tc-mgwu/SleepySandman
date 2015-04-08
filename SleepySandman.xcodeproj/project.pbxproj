@@ -27,6 +27,10 @@
 		A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21231A7B1CF1002DDDA9 /* YouWin.png */; };
 		A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A53C21241A7B1CF1002DDDA9 /* sprites.atlas */; };
 		A53C212C1A7B30EF002DDDA9 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */; };
+		A55E179B1AD59A84007081A2 /* SgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E179A1AD59A84007081A2 /* SgButton.swift */; };
+		A55E17A51AD59D16007081A2 /* PlayBT_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E17A21AD59D16007081A2 /* PlayBT_Down.png */; };
+		A55E17A61AD59D16007081A2 /* PlayBT_Inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E17A31AD59D16007081A2 /* PlayBT_Inactive.png */; };
+		A55E17A71AD59D16007081A2 /* PlayBT_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E17A41AD59D16007081A2 /* PlayBT_Normal.png */; };
 		A5810A721A7C47D200D52532 /* BackgroundMusic.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A6D1A7C47D100D52532 /* BackgroundMusic.wav */; };
 		A5810A731A7C47D200D52532 /* Bloop.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A6E1A7C47D100D52532 /* Bloop.wav */; };
 		A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */ = {isa = PBXBuildFile; fileRef = A5810A6F1A7C47D100D52532 /* hitCatLady.wav */; };
@@ -71,6 +75,10 @@
 		A53C21231A7B1CF1002DDDA9 /* YouWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouWin.png; sourceTree = "<group>"; };
 		A53C21241A7B1CF1002DDDA9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		A55E179A1AD59A84007081A2 /* SgButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SgButton.swift; sourceTree = "<group>"; };
+		A55E17A21AD59D16007081A2 /* PlayBT_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayBT_Down.png; sourceTree = "<group>"; };
+		A55E17A31AD59D16007081A2 /* PlayBT_Inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayBT_Inactive.png; sourceTree = "<group>"; };
+		A55E17A41AD59D16007081A2 /* PlayBT_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayBT_Normal.png; sourceTree = "<group>"; };
 		A5810A6D1A7C47D100D52532 /* BackgroundMusic.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BackgroundMusic.wav; sourceTree = "<group>"; };
 		A5810A6E1A7C47D100D52532 /* Bloop.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bloop.wav; sourceTree = "<group>"; };
 		A5810A6F1A7C47D100D52532 /* hitCatLady.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = hitCatLady.wav; sourceTree = "<group>"; };
@@ -140,6 +148,7 @@
 				A53C21021A7B1968002DDDA9 /* Main.storyboard */,
 				A53C21051A7B1968002DDDA9 /* Images.xcassets */,
 				A53C21071A7B1968002DDDA9 /* LaunchScreen.xib */,
+				A55E179A1AD59A84007081A2 /* SgButton.swift */,
 				A53C20F81A7B1968002DDDA9 /* Supporting Files */,
 			);
 			path = SleepySandman;
@@ -178,6 +187,9 @@
 				A521931F1ACCAF8900393717 /* SandmanHurt.png */,
 				A521931D1ACCAC5B00393717 /* background2.png */,
 				A52193191ACCAC2000393717 /* background1.png */,
+				A55E17A21AD59D16007081A2 /* PlayBT_Down.png */,
+				A55E17A31AD59D16007081A2 /* PlayBT_Inactive.png */,
+				A55E17A41AD59D16007081A2 /* PlayBT_Normal.png */,
 				A530CE3C1ACCB83900FDC559 /* Ow.png */,
 				A52193171ACCABE500393717 /* MainMenu.png */,
 				A53C21221A7B1CF1002DDDA9 /* YouLose.png */,
@@ -292,13 +304,16 @@
 				A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */,
 				A52193161ACCABD900393717 /* SandmanUI.png in Resources */,
 				A521931E1ACCAC5B00393717 /* background2.png in Resources */,
+				A55E17A51AD59D16007081A2 /* PlayBT_Down.png in Resources */,
 				A5810A761A7C47D200D52532 /* win.wav in Resources */,
 				A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */,
 				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
 				A530CE3D1ACCB83900FDC559 /* Ow.png in Resources */,
 				A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */,
+				A55E17A71AD59D16007081A2 /* PlayBT_Normal.png in Resources */,
 				A533DEDC1A9400A80048E840 /* MERKIN.ttf in Resources */,
 				A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */,
+				A55E17A61AD59D16007081A2 /* PlayBT_Inactive.png in Resources */,
 				A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -322,6 +337,7 @@
 				A53C20FF1A7B1968002DDDA9 /* GameScene.swift in Sources */,
 				A53C21011A7B1968002DDDA9 /* GameViewController.swift in Sources */,
 				A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */,
+				A55E179B1AD59A84007081A2 /* SgButton.swift in Sources */,
 				A53C212C1A7B30EF002DDDA9 /* MyUtils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
