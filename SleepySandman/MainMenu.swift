@@ -30,19 +30,35 @@ class MainMenu: SKScene {
 //        self.addChild(_playButton)
         
         
-        var btn10 = SgButton(normalImageNamed: "PlayBT_Normal.png", highlightedImageNamed: "PlayBT_Down.png", disabledImageNamed: "PlayBT_Inactive.png", buttonFunc: tappedButton)
-        btn10.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
-        btn10.tag = 10
-        self.addChild(btn10)
+        var playBT = SgButton(normalImageNamed: "PlayBT_Normal.png", highlightedImageNamed: "PlayBT_Down.png", disabledImageNamed: "PlayBT_Inactive.png", buttonFunc: tappedButtonPlay)
+        playBT.position = CGPoint(x: self.size.width/2, y: self.size.height/3.5)
+//        playBT.tag = 10
+        self.addChild(playBT)
+        
+        
+        
+        var aboutBT = SgButton(normalImageNamed: "AboutBT_Normal.png", highlightedImageNamed: "AboutBT_Down.png", disabledImageNamed: "AboutBT_Inactive.png", buttonFunc: tappedButton)
+        aboutBT.position = CGPoint(x: self.size.width/5, y: self.size.height/4)
+        //        playBT.tag = 10
+        self.addChild(aboutBT)
     }
 
-    func tappedButton(button: SgButton) {
+    func tappedButtonPlay(button: SgButton) {
         println("tappedButton tappedButton tag=\(button.tag)")
         let myScene = GameScene(size:self.size)
         myScene.scaleMode = scaleMode
         let reveal = SKTransition.doorwayWithDuration(1.5)
         self.view?.presentScene(myScene, transition: reveal)
 
+    }
+    
+    func tappedButton(button: SgButton) {
+        println("tappedButton tappedButton tag=\(button.tag)")
+        let myScene = GameScene(size:self.size) //change this to another scene later--instructions & about
+        myScene.scaleMode = scaleMode
+        let reveal = SKTransition.doorwayWithDuration(1.5)
+        self.view?.presentScene(myScene, transition: reveal)
+        
     }
 
 //    func sceneTapped() {
