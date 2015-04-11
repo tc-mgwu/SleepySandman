@@ -38,6 +38,11 @@ class MainMenu: SKScene {
 
     func tappedButton(button: SgButton) {
         println("tappedButton tappedButton tag=\(button.tag)")
+        let myScene = GameScene(size:self.size)
+        myScene.scaleMode = scaleMode
+        let reveal = SKTransition.doorwayWithDuration(1.5)
+        self.view?.presentScene(myScene, transition: reveal)
+
     }
 
 //    func sceneTapped() {
