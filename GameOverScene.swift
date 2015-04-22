@@ -33,7 +33,7 @@ class GameOverScene: SKScene {
         waitForCompletion: false)
         ]))
     } else {
-        background = SKSpriteNode(imageNamed: "YouLose")
+        background = SKSpriteNode(imageNamed: "background1")
         runAction(SKAction.sequence([
         SKAction.waitForDuration(0.1),
         SKAction.playSoundFileNamed("lose.wav",
