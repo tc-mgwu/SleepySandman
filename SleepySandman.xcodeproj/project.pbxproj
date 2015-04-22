@@ -28,7 +28,6 @@
 		A53C21091A7B1968002DDDA9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A53C21071A7B1968002DDDA9 /* LaunchScreen.xib */; };
 		A53C21151A7B1968002DDDA9 /* SleepySandmanTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */; };
 		A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21221A7B1CF1002DDDA9 /* YouLose.png */; };
-		A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21231A7B1CF1002DDDA9 /* YouWin.png */; };
 		A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A53C21241A7B1CF1002DDDA9 /* sprites.atlas */; };
 		A53C212C1A7B30EF002DDDA9 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */; };
 		A54594AA1AE759C5004AD3E8 /* AboutWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = A54594A91AE759C5004AD3E8 /* AboutWindow.png */; };
@@ -91,7 +90,6 @@
 		A53C21131A7B1968002DDDA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A53C21141A7B1968002DDDA9 /* SleepySandmanTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepySandmanTests.swift; sourceTree = "<group>"; };
 		A53C21221A7B1CF1002DDDA9 /* YouLose.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouLose.png; sourceTree = "<group>"; };
-		A53C21231A7B1CF1002DDDA9 /* YouWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouWin.png; sourceTree = "<group>"; };
 		A53C21241A7B1CF1002DDDA9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
 		A54594A91AE759C5004AD3E8 /* AboutWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutWindow.png; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 				A530CE3C1ACCB83900FDC559 /* Ow.png */,
 				A52193171ACCABE500393717 /* MainMenu.png */,
 				A53C21221A7B1CF1002DDDA9 /* YouLose.png */,
-				A53C21231A7B1CF1002DDDA9 /* YouWin.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -344,7 +341,6 @@
 				A5A780FB1AD8B956004244D7 /* ReplayBT_Down.png in Resources */,
 				A5A780F91AD8B956004244D7 /* AboutBT_Inactive.png in Resources */,
 				A54594B01AE766AF004AD3E8 /* BackBT_Normal.png in Resources */,
-				A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */,
 				A52193201ACCAF8900393717 /* SandmanHurt.png in Resources */,
 				A5A780FD1AD8B956004244D7 /* ReplayBT_Normal.png in Resources */,
 				A5810A751A7C47D200D52532 /* lose.wav in Resources */,

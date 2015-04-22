@@ -26,19 +26,37 @@ class GameOverScene: SKScene {
     override func didMoveToView(view: SKView) {
         var background: SKSpriteNode
         if (won) {
-        background = SKSpriteNode(imageNamed: "YouWin")
+        background = SKSpriteNode(imageNamed: "EndBackground")
         runAction(SKAction.sequence([
         SKAction.waitForDuration(0.1),
         SKAction.playSoundFileNamed("win.wav",
         waitForCompletion: false)
         ]))
+            
+        let winPopup = SKSpriteNode(imageNamed: "WinPopup")
+        winPopup.anchorPoint = CGPointMake(0.5, 0.5)
+        winPopup.position = CGPointMake(0, 0)
+        winPopup.xScale = 0.7
+        winPopup.yScale = 0.7
+        background.addChild(winPopup)
+            
+            
     } else {
-        background = SKSpriteNode(imageNamed: "background1")
+        background = SKSpriteNode(imageNamed: "EndBackground")
         runAction(SKAction.sequence([
         SKAction.waitForDuration(0.1),
         SKAction.playSoundFileNamed("lose.wav",
             waitForCompletion: false)
         ]))
+            
+        let losePopup = SKSpriteNode(imageNamed: "LosePopup")
+        losePopup.anchorPoint = CGPointMake(0.5, 0.5)
+        losePopup.position = CGPointMake(0, 0)
+        losePopup.xScale = 0.7
+        losePopup.yScale = 0.7
+        background.addChild(losePopup)
+            
+            
         }
         background.position =
             CGPoint(x: self.size.width/2, y: self.size.height/2)
