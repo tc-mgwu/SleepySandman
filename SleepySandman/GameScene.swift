@@ -389,7 +389,7 @@ class GameScene: SKScene {
         let myString = String(sheep.sheepValue)
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
-        sheepLabel.fontColor = SKColor.darkGrayColor()
+        sheepLabel.fontColor = SKColor.purpleColor()
         sheepLabel.fontSize = 30
         sheepLabel.text = myString
         sheepLabel.zPosition = 50

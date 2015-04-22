@@ -12,7 +12,8 @@ import SpriteKit
 
 class AboutScene: SKScene {
 
-
+    let textLabel:SKLabelNode = SKLabelNode(fontNamed: "MERKIN")
+    
     override func didMoveToView(view: SKView) {
         
         
@@ -22,7 +23,7 @@ class AboutScene: SKScene {
         self.addChild(background)
 
         
-        let aboutWindow = SKSpriteNode(imageNamed: "AboutWindow")
+        let aboutWindow = SKSpriteNode(imageNamed: "AboutWindowInstructions")
         aboutWindow.anchorPoint = CGPointMake(0.5, 0.5)
         aboutWindow.position = CGPointMake(0, 0)
         aboutWindow.xScale = 0.7
