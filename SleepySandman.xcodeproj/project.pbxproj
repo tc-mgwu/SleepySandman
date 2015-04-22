@@ -27,6 +27,10 @@
 		A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */ = {isa = PBXBuildFile; fileRef = A53C21231A7B1CF1002DDDA9 /* YouWin.png */; };
 		A53C212A1A7B1CF1002DDDA9 /* sprites.atlas in Resources */ = {isa = PBXBuildFile; fileRef = A53C21241A7B1CF1002DDDA9 /* sprites.atlas */; };
 		A53C212C1A7B30EF002DDDA9 /* MyUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */; };
+		A54594AA1AE759C5004AD3E8 /* AboutWindow.png in Resources */ = {isa = PBXBuildFile; fileRef = A54594A91AE759C5004AD3E8 /* AboutWindow.png */; };
+		A54594AE1AE766AF004AD3E8 /* BackBT_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = A54594AB1AE766AF004AD3E8 /* BackBT_Down.png */; };
+		A54594AF1AE766AF004AD3E8 /* BackBT_Inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = A54594AC1AE766AF004AD3E8 /* BackBT_Inactive.png */; };
+		A54594B01AE766AF004AD3E8 /* BackBT_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A54594AD1AE766AF004AD3E8 /* BackBT_Normal.png */; };
 		A55E179B1AD59A84007081A2 /* SgButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55E179A1AD59A84007081A2 /* SgButton.swift */; };
 		A55E17A51AD59D16007081A2 /* PlayBT_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E17A21AD59D16007081A2 /* PlayBT_Down.png */; };
 		A55E17A61AD59D16007081A2 /* PlayBT_Inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = A55E17A31AD59D16007081A2 /* PlayBT_Inactive.png */; };
@@ -44,6 +48,7 @@
 		A5A780FB1AD8B956004244D7 /* ReplayBT_Down.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A780F51AD8B956004244D7 /* ReplayBT_Down.png */; };
 		A5A780FC1AD8B956004244D7 /* ReplayBT_Inactive.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A780F61AD8B956004244D7 /* ReplayBT_Inactive.png */; };
 		A5A780FD1AD8B956004244D7 /* ReplayBT_Normal.png in Resources */ = {isa = PBXBuildFile; fileRef = A5A780F71AD8B956004244D7 /* ReplayBT_Normal.png */; };
+		A5A781031AD8BBBE004244D7 /* AboutScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A781021AD8BBBE004244D7 /* AboutScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +86,10 @@
 		A53C21231A7B1CF1002DDDA9 /* YouWin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = YouWin.png; sourceTree = "<group>"; };
 		A53C21241A7B1CF1002DDDA9 /* sprites.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = sprites.atlas; sourceTree = "<group>"; };
 		A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyUtils.swift; sourceTree = "<group>"; };
+		A54594A91AE759C5004AD3E8 /* AboutWindow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = AboutWindow.png; sourceTree = "<group>"; };
+		A54594AB1AE766AF004AD3E8 /* BackBT_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackBT_Down.png; sourceTree = "<group>"; };
+		A54594AC1AE766AF004AD3E8 /* BackBT_Inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackBT_Inactive.png; sourceTree = "<group>"; };
+		A54594AD1AE766AF004AD3E8 /* BackBT_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackBT_Normal.png; sourceTree = "<group>"; };
 		A55E179A1AD59A84007081A2 /* SgButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SgButton.swift; sourceTree = "<group>"; };
 		A55E17A21AD59D16007081A2 /* PlayBT_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayBT_Down.png; sourceTree = "<group>"; };
 		A55E17A31AD59D16007081A2 /* PlayBT_Inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PlayBT_Inactive.png; sourceTree = "<group>"; };
@@ -98,6 +107,7 @@
 		A5A780F51AD8B956004244D7 /* ReplayBT_Down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReplayBT_Down.png; sourceTree = "<group>"; };
 		A5A780F61AD8B956004244D7 /* ReplayBT_Inactive.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReplayBT_Inactive.png; sourceTree = "<group>"; };
 		A5A780F71AD8B956004244D7 /* ReplayBT_Normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ReplayBT_Normal.png; sourceTree = "<group>"; };
+		A5A781021AD8BBBE004244D7 /* AboutScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AboutScene.swift; path = ../AboutScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +164,7 @@
 				A53C20FA1A7B1968002DDDA9 /* AppDelegate.swift */,
 				A53C20FE1A7B1968002DDDA9 /* GameScene.swift */,
 				A5377D411A805DE300D8FDF8 /* GameOverScene.swift */,
+				A5A781021AD8BBBE004244D7 /* AboutScene.swift */,
 				A5A5D65B1ABB97DE00FF92F9 /* MainMenu.swift */,
 				A53C212B1A7B30EF002DDDA9 /* MyUtils.swift */,
 				A53C21001A7B1968002DDDA9 /* GameViewController.swift */,
@@ -195,10 +206,14 @@
 			isa = PBXGroup;
 			children = (
 				A52193131ACCABD900393717 /* Playbutton.png */,
+				A54594A91AE759C5004AD3E8 /* AboutWindow.png */,
 				A52193141ACCABD900393717 /* SandmanUI.png */,
 				A521931F1ACCAF8900393717 /* SandmanHurt.png */,
 				A5A780F21AD8B956004244D7 /* AboutBT_Down.png */,
 				A5A780F31AD8B956004244D7 /* AboutBT_Inactive.png */,
+				A54594AB1AE766AF004AD3E8 /* BackBT_Down.png */,
+				A54594AC1AE766AF004AD3E8 /* BackBT_Inactive.png */,
+				A54594AD1AE766AF004AD3E8 /* BackBT_Normal.png */,
 				A5A780F41AD8B956004244D7 /* AboutBT_Normal.png */,
 				A5A780F51AD8B956004244D7 /* ReplayBT_Down.png */,
 				A5A780F61AD8B956004244D7 /* ReplayBT_Inactive.png */,
@@ -316,6 +331,7 @@
 				A5810A731A7C47D200D52532 /* Bloop.wav in Resources */,
 				A5A780FB1AD8B956004244D7 /* ReplayBT_Down.png in Resources */,
 				A5A780F91AD8B956004244D7 /* AboutBT_Inactive.png in Resources */,
+				A54594B01AE766AF004AD3E8 /* BackBT_Normal.png in Resources */,
 				A53C21291A7B1CF1002DDDA9 /* YouWin.png in Resources */,
 				A52193201ACCAF8900393717 /* SandmanHurt.png in Resources */,
 				A5A780FD1AD8B956004244D7 /* ReplayBT_Normal.png in Resources */,
@@ -331,6 +347,7 @@
 				A53C21281A7B1CF1002DDDA9 /* YouLose.png in Resources */,
 				A53C21061A7B1968002DDDA9 /* Images.xcassets in Resources */,
 				A530CE3D1ACCB83900FDC559 /* Ow.png in Resources */,
+				A54594AE1AE766AF004AD3E8 /* BackBT_Down.png in Resources */,
 				A5810A741A7C47D200D52532 /* hitCatLady.wav in Resources */,
 				A5A780FC1AD8B956004244D7 /* ReplayBT_Inactive.png in Resources */,
 				A55E17A71AD59D16007081A2 /* PlayBT_Normal.png in Resources */,
@@ -339,6 +356,8 @@
 				A5810A781A7C4BB500D52532 /* BackgroundMusic.mp3 in Resources */,
 				A55E17A61AD59D16007081A2 /* PlayBT_Inactive.png in Resources */,
 				A53C21041A7B1968002DDDA9 /* Main.storyboard in Resources */,
+				A54594AA1AE759C5004AD3E8 /* AboutWindow.png in Resources */,
+				A54594AF1AE766AF004AD3E8 /* BackBT_Inactive.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +379,7 @@
 				A5A5D65C1ABB97DE00FF92F9 /* MainMenu.swift in Sources */,
 				A53C20FF1A7B1968002DDDA9 /* GameScene.swift in Sources */,
 				A53C21011A7B1968002DDDA9 /* GameViewController.swift in Sources */,
+				A5A781031AD8BBBE004244D7 /* AboutScene.swift in Sources */,
 				A53C20FB1A7B1968002DDDA9 /* AppDelegate.swift in Sources */,
 				A55E179B1AD59A84007081A2 /* SgButton.swift in Sources */,
 				A53C212C1A7B30EF002DDDA9 /* MyUtils.swift in Sources */,

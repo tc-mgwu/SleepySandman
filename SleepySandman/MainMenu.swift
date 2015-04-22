@@ -9,6 +9,7 @@
 import Foundation
 import SpriteKit
 
+
 class MainMenu: SKScene {
     
     
@@ -23,8 +24,7 @@ class MainMenu: SKScene {
         let background = SKSpriteNode(imageNamed:"MainMenu")
         background.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
         self.addChild(background)
-        
-        
+      
 //        _playButton.position = CGPoint(x: self.size.width/2, y: self.size.height/3)
 //      
 //        self.addChild(_playButton)
@@ -54,7 +54,7 @@ class MainMenu: SKScene {
     
     func tappedButton(button: SgButton) {
         println("tappedButton tappedButton tag=\(button.tag)")
-        let myScene = GameScene(size:self.size) //change this to another scene later--instructions & about
+        let myScene = AboutScene(size:self.size) //change this to another scene later--instructions & about
         myScene.scaleMode = scaleMode
         let reveal = SKTransition.doorwayWithDuration(1.5)
         self.view?.presentScene(myScene, transition: reveal)
