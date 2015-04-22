@@ -13,7 +13,6 @@ class GameScene: SKScene {
 
     let screenSize: CGRect = UIScreen.mainScreen().bounds
     let sandman: SKSpriteNode = SKSpriteNode(imageNamed: "sandman1")
-    
     var lastUpdateTime: NSTimeInterval = 0
     var dt: NSTimeInterval = 0
     let sandmanMovePointsPerSec: CGFloat = 480.0
@@ -25,6 +24,7 @@ class GameScene: SKScene {
     let sandmanRotateRadiansPerSec:CGFloat = 4.0 * π
     var invincible = false
     let sandmanAnimation: SKAction
+    let sheepAnimation: SKAction
     var numberFirst = 0
     var numberSecond = 0
     var pickEquationType = 0
@@ -33,8 +33,8 @@ class GameScene: SKScene {
     
     var gameOver = false
     
-    let hudLayer = SKNode()
-//    var hudLayer = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(200, 200))
+//    let hudLayer = SKNode()
+  
     let backgroundLayer = SKNode()
     let backgroundMovePointsPerSec: CGFloat = 150.0
     
@@ -81,6 +81,22 @@ class GameScene: SKScene {
         sandman.zPosition = 150
         
        
+        
+        //animate character
+        //create array to store all textures
+        var sheeptextures:[SKTexture] = []
+        //string setup
+        for i in 1...3 {
+            sheeptextures.append(SKTexture(imageNamed: "Sheep\(i)"))
+        }
+        sheeptextures.append(textures[2])
+        sheeptextures.append(textures[1])
+        
+        sheepAnimation = SKAction.repeatActionForever(
+            SKAction.animateWithTextures(sheeptextures, timePerFrame: 0.1))
+        
+
+        
         super.init(size: size) // 5
         
        
@@ -115,11 +131,10 @@ class GameScene: SKScene {
         backgroundLayer.zPosition = -1
         
         self.addChild(backgroundLayer)
-       
-//        hudLayer.position = CGPoint(x: CGRectGetMinX(screenSize), y: CGRectGetMaxY(screenSize))
-       
-       
-   
+        
+        var hudLayer = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, 200))
+        hudLayer.anchorPoint = CGPointMake(0, 1)
+        hudLayer.position = CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)*3.6t)
         hudLayer.zPosition = 100
         self.addChild(hudLayer)
         
@@ -150,21 +165,21 @@ class GameScene: SKScene {
         //spawn sheep forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
-            SKAction.waitForDuration(2.0)])))
-//        
+            SKAction.waitForDuration(3.0)])))
+        
 //        createHUD()
         
         
-        sandmanLives.anchorPoint = CGPointMake(0 , 1);
-
-        sandmanLives.position = CGPoint(x: 25, y: self.size.height-self.size.height/9)
+        sandmanLives.anchorPoint = CGPointMake(0 , 1)
+        sandmanLives.position = CGPointMake(100, 100)
+//        sandmanLives.position = CGPoint(x: 25, y: self.size.height-self.size.height/9)
         
         hudLayer.addChild(sandmanLives)
         
         lblLives = SKLabelNode(fontNamed: "MERKIN")
-        lblLives.fontSize = 35
+        lblLives.fontSize = 60
         lblLives.fontColor = SKColor.whiteColor()
-        lblLives.position = CGPoint(x: 0, y: 0)
+        lblLives.position = CGPointMake(sandmanLives.size.width, sandmanLives.size.height)
         lblLives.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         lblLives.text = String(format: "X %d", lives)
         lblLives.zPosition = 200
@@ -341,11 +356,23 @@ class GameScene: SKScene {
     func stopSandmanAnimation() {
         sandman.removeActionForKey("animation")
     }
+    
+    
+    func startSheepAnimation()
+    {
+        if sheep.actionForKey("animation") == nil
+        {
+            sheep.runAction(
+                SKAction.repeatActionForever(sheepAnimation),
+                withKey: "animation")
+        }
+    }
+
 
     //SPAWN SHEEP
     func spawnSheep()
     {
-     let sheep = SheepNode(imageNamed: "sheep")
+     let sheep = SheepNode(imageNamed: "Sheep1")
         sheep.name = "sheep"
         let sheepScenePos = CGPoint(
             x: CGFloat.random(min: CGRectGetMidX(playableRect)-100,
@@ -390,11 +417,14 @@ class GameScene: SKScene {
         let sheepLabel = SKLabelNode(fontNamed: "MERKIN")
         sheepLabel.name = "sheepmathproblem"
         sheepLabel.fontColor = SKColor.purpleColor()
-        sheepLabel.fontSize = 30
+        sheepLabel.fontSize = 40
         sheepLabel.text = myString
         sheepLabel.zPosition = 50
         sheep.addChild(sheepLabel)
         println("sheepValue: \(sheep.sheepValue)")
+        
+         startSandmanAnimation() 
+        
 
 
     }
