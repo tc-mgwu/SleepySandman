@@ -18,10 +18,11 @@ class AboutScene: SKScene {
         
         
         
+        
         let background = SKSpriteNode(imageNamed:"background1")
         background.position = CGPoint(x:self.size.width/2, y:self.size.height/2)
         self.addChild(background)
-
+        
         
         let aboutWindow = SKSpriteNode(imageNamed: "AboutWindowInstructions")
         aboutWindow.anchorPoint = CGPointMake(0.5, 0.5)

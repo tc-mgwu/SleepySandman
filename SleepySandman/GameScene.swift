@@ -64,7 +64,7 @@ class GameScene: SKScene {
             width: size.width,
             height: playableHeight - 50) // 4
         
- 
+       
         
         //animate character
         //create array to store all textures
@@ -102,6 +102,9 @@ class GameScene: SKScene {
        
         
     }
+    func convert(point: CGPoint)->CGPoint {
+        return self.view!.convertPoint(CGPoint(x: point.x, y:self.view!.frame.height-point.y), toScene:self)
+    }
 //    
 //    func createHUD(){
 //        var hud = SKSpriteNode(color: UIColor.blackColor(), size: CGSizeMake(self.size.width, self.size.height*0.05))
@@ -123,18 +126,20 @@ class GameScene: SKScene {
     override func didMoveToView(view: SKView)
     {
 
+              
         let screenWidth = screenSize.width
         let screenHeight = screenSize.height
-        let maxY = CGRectGetMaxY(screenSize)
+        
        
         playBackgroundMusic("BackgroundMusic.mp3")
         backgroundLayer.zPosition = -1
         
         self.addChild(backgroundLayer)
         
+        //create HUD reference layer- uncolor it later
         var hudLayer = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, 200))
         hudLayer.anchorPoint = CGPointMake(0, 1)
-        hudLayer.position = CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)*3.6t)
+        hudLayer.position = CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)*3.6)
         hudLayer.zPosition = 100
         self.addChild(hudLayer)
         
@@ -170,8 +175,11 @@ class GameScene: SKScene {
 //        createHUD()
         
         
-        sandmanLives.anchorPoint = CGPointMake(0 , 1)
-        sandmanLives.position = CGPointMake(100, 100)
+//        sandmanLives.anchorPoint = CGPointMake(0 , 1)
+        CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)*3.6)
+        sandmanLives.position = convert(CGPoint(x: 0, y: 0))
+
+//        sandmanLives.position = CGPointMake(0,0)
 //        sandmanLives.position = CGPoint(x: 25, y: self.size.height-self.size.height/9)
         
         hudLayer.addChild(sandmanLives)
