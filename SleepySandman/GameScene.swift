@@ -137,11 +137,11 @@ class GameScene: SKScene {
         self.addChild(backgroundLayer)
         
         //create HUD reference layer- uncolor it later
-        var hudLayer = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, 200))
-        hudLayer.anchorPoint = CGPointMake(0, 1)
-        hudLayer.position = CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)*3.6)
-        hudLayer.zPosition = 100
-        self.addChild(hudLayer)
+//        var hudLayer = SKSpriteNode(color: SKColor.blackColor(), size: CGSizeMake(self.size.width, 100))
+//        hudLayer.anchorPoint = CGPointMake(0, 1)
+//        hudLayer.position = convert(CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)))
+//        hudLayer.zPosition = 100
+//        self.addChild(hudLayer)
         
         
         
@@ -165,33 +165,36 @@ class GameScene: SKScene {
         //spawn enemies forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnEnemy),
-                SKAction.waitForDuration(2.0)])))
+                SKAction.waitForDuration(4.3)])))
        
         //spawn sheep forever
         runAction(SKAction.repeatActionForever(
             SKAction.sequence([SKAction.runBlock(spawnSheep),
-            SKAction.waitForDuration(3.0)])))
+            SKAction.waitForDuration(2.2)])))
         
 //        createHUD()
         
         
-//        sandmanLives.anchorPoint = CGPointMake(0 , 1)
-        CGPointMake(CGRectGetMinX(screenSize), CGRectGetMaxY(screenSize)*3.6)
-        sandmanLives.position = convert(CGPoint(x: 0, y: 0))
-
+        sandmanLives.anchorPoint = CGPointMake(0,1)
 //        sandmanLives.position = CGPointMake(0,0)
 //        sandmanLives.position = CGPoint(x: 25, y: self.size.height-self.size.height/9)
         
-        hudLayer.addChild(sandmanLives)
         
+       
+        sandmanLives.position = convert(CGPointMake(CGRectGetMinX(screenSize)+10, CGRectGetMaxY(screenSize)-10))
+        sandmanLives.zPosition = 110
+        self.addChild(sandmanLives)
+        
+       
+
         lblLives = SKLabelNode(fontNamed: "MERKIN")
-        lblLives.fontSize = 60
+        lblLives.fontSize = 75
         lblLives.fontColor = SKColor.whiteColor()
-        lblLives.position = CGPointMake(sandmanLives.size.width, sandmanLives.size.height)
+        lblLives.position = convert(CGPointMake(CGRectGetMinX(screenSize) + 78, CGRectGetMaxY(screenSize) - 50))
         lblLives.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.Left
         lblLives.text = String(format: "X %d", lives)
         lblLives.zPosition = 200
-        sandmanLives.addChild(lblLives)
+        self.addChild(lblLives)
 
     }
 
@@ -344,7 +347,7 @@ class GameScene: SKScene {
         enemy.position = backgroundLayer.convertPoint(enemyScenePos, fromNode: self)
         backgroundLayer.addChild(enemy)
         
-        let actionMove = SKAction.moveByX(-size.width-enemy.size.width, y: 0, duration: 2.0)
+        let actionMove = SKAction.moveByX(-size.width-enemy.size.width, y: 0, duration: 2.5)
         //removes enemy
         let actionRemove = SKAction.removeFromParent()
         enemy.runAction(SKAction.sequence([actionMove, actionRemove]))
@@ -499,6 +502,7 @@ class GameScene: SKScene {
         sheep.name = "train"
         sheep.removeAllActions()
         sheep.setScale(1)
+        sheep.xScale = -1
         sheep.zRotation = 0
         
         
